@@ -1,22 +1,26 @@
-# APSAN Website Management
+# Website-Management — Gestor próprio da APSAN, LDA
 
-Este repositório é o centro de gestão de conteúdos do site oficial **https://apsanlda.com**.
+Este repositório será a aplicação administrativa própria da APSAN, LDA. Não utiliza Pages CMS nem outro CMS externo.
 
-## Como publicar
-1. Abra [Pages CMS](https://app.pagescms.org/) e entre com a conta GitHub autorizada.
-2. Selecione o repositório **mateus-max/Website-Management**, branch **main**.
-3. Crie/edite Serviços, Publicações, Vídeos YouTube ou Banners.
-4. Marque **Publicado no site** e guarde as alterações.
-5. O site oficial consulta este repositório público e apresenta os conteúdos publicados automaticamente. Pode levar alguns instantes devido à cache do GitHub/CDN.
+## Objetivo
+Gerir, num único painel próprio:
+- Publicações e notícias;
+- Vídeos públicos do YouTube;
+- Imagens e conteúdos multimédia;
+- Conteúdos publicados no site oficial https://apsanlda.com.
 
-## Conteúdos disponíveis
-- `content/services`: serviços.
-- `content/posts`: notícias e artigos.
-- `content/videos`: vídeos públicos do YouTube.
-- `public/uploads`: imagens carregadas pelo CMS.
+## Integração com o site oficial
+O ficheiro `apsan-sync.js` é o leitor público de conteúdos. O site oficial APSAN carrega os conteúdos publicados nas pastas:
+- `content/posts/`
+- `content/videos/`
+- `public/uploads/`
 
-## Site oficial
-https://apsanlda.com
+O painel próprio deverá gravar os conteúdos nestas pastas no repositório, com o campo `published: true` para os conteúdos que devem aparecer no site. Para ocultar um conteúdo, usar `published: false` ou removê-lo.
 
-## Segurança
-O site lê apenas conteúdo público deste repositório. Não são guardados tokens, passwords ou chaves de acesso no JavaScript do site. A publicação é feita autenticando-se no Pages CMS com a sua própria conta GitHub.
+## Segurança e publicação
+Não colocar tokens pessoais do GitHub no JavaScript do navegador. A autenticação e a escrita no repositório deverão ser feitas por um mecanismo seguro no servidor ou por OAuth com backend apropriado.
+
+## Repositórios
+- Gestor próprio: https://github.com/mateus-max/Website-Management
+- Site oficial: https://github.com/apsanlda1-ctrl/APSAN-LDA
+- Site publicado: https://apsanlda.com
