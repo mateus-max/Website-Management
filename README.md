@@ -2,29 +2,34 @@
 
 Painel administrativo próprio da APSAN, LDA, com acesso direto e sem ecrã de login.
 
-## Acesso
-O painel é servido pelo GitHub Pages deste repositório. Abra o endereço do Website-Management publicado pelo GitHub Pages.
-
 ## Funcionalidades
-- Criar, editar e eliminar serviços;
-- Criar, editar e eliminar notícias e artigos;
-- Publicar vídeos públicos do YouTube;
+- Dashboard com contagem de serviços, publicações e vídeos;
+- Criar, editar, pesquisar e eliminar serviços;
+- Criar, editar, pesquisar e eliminar notícias e artigos;
+- Editor de texto simples com negrito, itálico, títulos e listas;
+- Pré-visualização antes de publicar;
+- Carregamento de imagens diretamente do telemóvel/computador (PNG, JPG, WEBP e GIF, até 8 MB);
+- Adicionar vídeos públicos do YouTube com validação do link e pré-visualização;
 - Marcar conteúdos como publicados ou rascunhos;
-- Consultar os conteúdos existentes no repositório.
+- Atualizar a lista de conteúdos a partir do repositório.
 
-## Publicação
-O painel não exige autenticação para ser aberto ou consultado. Para gravar alterações no repositório, é necessária uma autorização de escrita GitHub fornecida nas definições de publicação. O token fica apenas em `sessionStorage` nesta sessão do navegador e não é incluído no código nem no site oficial.
+## Acesso e gravação
+O painel não exige login para ser aberto ou consultado. Para gravar, editar, carregar imagens ou eliminar ficheiros no GitHub, é necessária uma autorização de escrita.
 
-Para o token, utilizar um Fine-grained Personal Access Token limitado ao repositório `mateus-max/Website-Management`, com permissões de Contents: Read and write. Não partilhar o token. Como o painel é público e não tem login, qualquer pessoa pode abrir a interface; só deve ser fornecida autorização de publicação a pessoas de confiança.
+A autorização é fornecida em **Definições de publicação** e fica apenas no `sessionStorage` da sessão atual do navegador. Não é colocada no código nem enviada ao site oficial. Use um Fine-grained Personal Access Token limitado ao repositório `mateus-max/Website-Management`, com permissões de Contents: Read and write.
 
-## Integração com APSAN
-O site https://apsanlda.com consulta os conteúdos publicados através do ficheiro `apsan-sync.js`.
+**Atenção:** como o painel é de acesso direto, qualquer pessoa pode abrir a interface. Não introduza nem deixe ativa a autorização de publicação num dispositivo partilhado ou não confiável.
+
+## Integração com o site oficial
+O site https://apsanlda.com consulta os conteúdos publicados através de `apsan-sync.js`.
 
 Pastas:
 - `content/services`: serviços;
 - `content/posts`: notícias e artigos;
 - `content/videos`: vídeos YouTube;
-- `public/uploads`: imagens.
+- `public/uploads`: imagens carregadas.
 
-## Nota
-O carregamento de imagens diretamente pelo painel será acrescentado numa próxima atualização. Por enquanto, os campos de imagem aceitam um URL público ou caminho de imagem já existente.
+Depois de guardar no GitHub, o site apresenta os conteúdos marcados como publicados na próxima leitura da fonte, sujeito à atualização da cache do GitHub/CDN.
+
+## Publicação do painel
+O ficheiro `index.html` é a interface do painel. Para o abrir publicamente, o GitHub Pages deve estar ativado neste repositório e configurado para publicar a branch `main` a partir da raiz.
