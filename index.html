@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#071d3b">
+<title>APSAN | Gestão de Conteúdos</title>
+<style>
+:root{--navy:#071d3b;--navy2:#0b2b53;--blue:#0878c9;--cyan:#38bdf8;--gold:#d6ad55;--ink:#172b45;--muted:#718096;--bg:#f2f5f9;--line:#e0e7ef;--white:#fff;--green:#159b69;--red:#d94b55}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink)}button,input,textarea,select{font:inherit}button{cursor:pointer}
+.top{background:linear-gradient(120deg,var(--navy),#104579);color:white;padding:18px clamp(16px,4vw,42px);display:flex;align-items:center;justify-content:space-between;gap:15px;box-shadow:0 5px 20px #08274a25}
+.brand{display:flex;align-items:center;gap:13px}.logo{width:48px;height:48px;border-radius:13px;background:#fff;display:grid;place-items:center;color:var(--navy);font-weight:900;font-size:13px;border:2px solid #ffffff55}.brand h1{font-size:18px;margin:0;letter-spacing:.3px}.brand p{margin:3px 0 0;color:#c5d8eb;font-size:12px}.top-actions{display:flex;align-items:center;gap:9px}.status{font-size:12px;color:#d5e7f7}
+.wrap{max-width:1320px;margin:25px auto;padding:0 18px 50px}.intro{display:flex;justify-content:space-between;align-items:end;gap:15px;margin-bottom:20px}.intro h2{margin:0;font-size:25px;color:var(--navy)}.intro p{margin:6px 0 0;color:var(--muted);font-size:14px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}.stat{background:white;border:1px solid var(--line);border-radius:15px;padding:17px 19px;box-shadow:0 5px 16px #0a2b5010}.stat span{font-size:12px;color:var(--muted)}.stat strong{display:block;font-size:27px;color:var(--navy);margin-top:5px}
+.layout{display:grid;grid-template-columns:235px minmax(0,1fr);gap:18px;align-items:start}.side,.panel{background:white;border:1px solid var(--line);border-radius:17px;box-shadow:0 5px 20px #0a2b500c}.side{padding:12px;position:sticky;top:14px}.navbtn{width:100%;display:flex;align-items:center;gap:11px;border:0;background:transparent;color:#52647a;text-align:left;padding:13px 12px;border-radius:11px;font-weight:650;margin:2px 0}.navbtn .ico{width:23px;text-align:center;font-size:17px}.navbtn.active{background:#eaf4fc;color:#075da2}.navbtn:hover{background:#f1f6fa}.side-note{border-top:1px solid var(--line);margin-top:12px;padding:13px 9px 5px;color:#77869a;font-size:11px;line-height:1.5}
+.panel{padding:clamp(16px,3vw,27px);min-height:540px}.panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px}.panel-head h3{margin:0;color:var(--navy);font-size:20px}.panel-head p{margin:5px 0 0;color:var(--muted);font-size:13px}
+.btn{border:0;border-radius:10px;padding:10px 15px;font-weight:700;font-size:13px;display:inline-flex;align-items:center;justify-content:center;gap:7px}.primary{background:var(--blue);color:white}.primary:hover{background:#0565aa}.soft{background:#edf3f8;color:#24415f}.danger{background:#fff0f0;color:var(--red)}.gold{background:var(--gold);color:#172b45}.btn:disabled{opacity:.5;cursor:not-allowed}
+.toolbar{display:flex;gap:10px;align-items:center;margin-bottom:15px}.search{flex:1;min-width:0}
+input,textarea,select{width:100%;border:1px solid #d6e0ea;border-radius:10px;padding:11px 12px;background:#fff;color:var(--ink);outline:none}input:focus,textarea:focus,select:focus{border-color:#5ba6df;box-shadow:0 0 0 3px #1684cf18}textarea{resize:vertical;min-height:105px}.field{margin-bottom:14px}.field label{display:block;font-size:12px;font-weight:750;color:#40546b;margin-bottom:6px}.hint{font-size:11px;color:#8290a2;margin-top:5px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.list{display:grid;gap:10px}.item{display:flex;align-items:center;gap:13px;border:1px solid var(--line);border-radius:13px;padding:12px}.thumb{width:66px;height:55px;flex:0 0 66px;border-radius:9px;background:#eaf0f6;display:grid;place-items:center;overflow:hidden;color:#5d7895;font-size:22px}.thumb img{width:100%;height:100%;object-fit:cover}.item-main{flex:1;min-width:0}.item-main strong{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px}.item-main small{display:block;margin-top:5px;color:var(--muted);font-size:11px}.badge{display:inline-block;padding:4px 8px;border-radius:99px;font-size:10px;font-weight:800;background:#e8f7ef;color:#168153;margin-top:6px}.badge.off{background:#f0f2f5;color:#7b8794}.item-actions{display:flex;gap:6px}
+.empty{border:1px dashed #cbd7e3;border-radius:13px;padding:35px 15px;text-align:center;color:#7a8a9d;font-size:13px}
+.form-wrap{max-width:850px}.form-actions{display:flex;gap:9px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:17px;margin-top:18px}.check{display:flex;gap:9px;align-items:center;font-size:13px;color:#40546b}.check input{width:17px;height:17px}
+.notice{border-radius:11px;padding:12px 14px;font-size:12px;line-height:1.5;margin-bottom:15px;background:#eef6fc;color:#315b7e}.notice.warn{background:#fff7e8;color:#815d20}.notice.ok{background:#eaf8f0;color:#176b48}.notice.error{background:#fff0f0;color:#a33740}
+.token-box{background:#f8fafc;border:1px solid var(--line);border-radius:13px;padding:15px;margin-bottom:18px}.token-box summary{font-weight:750;color:#344b65;font-size:13px;cursor:pointer}.token-row{display:flex;gap:9px;margin-top:12px}.token-row input{flex:1}.footer{text-align:center;color:#8b98a8;font-size:11px;padding:22px}
+@media(max-width:760px){.top{align-items:flex-start}.status{display:none}.layout{grid-template-columns:1fr}.side{position:static;display:flex;overflow-x:auto;gap:5px;padding:8px}.navbtn{width:auto;white-space:nowrap;margin:0;padding:10px}.navbtn .ico{width:auto}.side-note{display:none}.stats{gap:8px}.stat{padding:12px}.stat strong{font-size:22px}.intro{align-items:flex-start;flex-direction:column}.item{gap:8px}.thumb{width:48px;height:48px;flex-basis:48px}.item-actions{flex-direction:column}.grid2{grid-template-columns:1fr}.token-row{flex-direction:column}}
+</style>
+</head>
+<body>
+<header class="top"><div class="brand"><div class="logo">APSAN</div><div><h1>APSAN · Gestão de Conteúdos</h1><p>Centro de publicação do website oficial</p></div></div><div class="top-actions"><span class="status">Painel de acesso direto · sem login</span><button class="btn soft" id="refreshBtn">↻ Atualizar</button></div></header>
+<main class="wrap">
+<div class="intro"><div><h2>Painel de controlo</h2><p>Gere os conteúdos que serão apresentados em apsanlda.com.</p></div><span class="badge" id="connectionBadge">A carregar dados…</span></div>
+<section class="stats"><div class="stat"><span>Serviços</span><strong id="countServices">—</strong></div><div class="stat"><span>Publicações</span><strong id="countPosts">—</strong></div><div class="stat"><span>Vídeos YouTube</span><strong id="countVideos">—</strong></div></section>
+<div class="layout">
+<aside class="side">
+<button class="navbtn active" data-tab="services"><span class="ico">▦</span> Serviços</button>
+<button class="navbtn" data-tab="posts"><span class="ico">▤</span> Publicações</button>
+<button class="navbtn" data-tab="videos"><span class="ico">▶</span> Vídeos YouTube</button>
+<div class="side-note">APSAN, LDA<br>Gestão editorial própria</div>
+</aside>
+<section class="panel">
+<div id="notice" class="notice">O painel está aberto. Para gravar conteúdos no GitHub, configura a autorização de publicação nas definições abaixo.</div>
+<details class="token-box" id="publishSettings"><summary>⚙ Definições de publicação (não é login do painel)</summary><div class="notice warn" style="margin-top:12px">O painel é de acesso direto, sem autenticação. Para gravar no repositório é necessário um token GitHub com acesso de escrita ao repositório. O token fica apenas nesta sessão do navegador e não é enviado ao site público. Não partilhes este painel com pessoas não autorizadas enquanto o token estiver ativo.</div><div class="token-row"><input id="githubToken" type="password" autocomplete="off" placeholder="Token GitHub (fine-grained, Contents: Read and write)"><button class="btn soft" id="saveToken">Usar nesta sessão</button><button class="btn danger" id="clearToken">Limpar</button></div><div class="hint">Não coloques o token no código. Ao fechar a sessão do navegador, o token temporário será eliminado.</div></details>
+<div id="view"></div>
+</section>
+</div>
+<div class="footer">APSAN, LDA · Painel próprio de gestão de conteúdos</div>
+</main>
+<script>
+const OWNER="mateus-max",REPO="Website-Management",BRANCH="main";
+const API="https://api.github.com/repos/"+OWNER+"/"+REPO+"/contents/";
+const RAW="https://raw.githubusercontent.com/"+OWNER+"/"+REPO+"/main/";
+const TYPES={
+ services:{label:"Serviços",folder:"content/services",fields:["title","category","summary","details","icon","price","image","published"]},
+ posts:{label:"Publicações",folder:"content/posts",fields:["title","date","category","excerpt","coverImage","body","published"]},
+ videos:{label:"Vídeos YouTube",folder:"content/videos",fields:["title","url","description","published"]}
+};
+let tab="services",items=[],editing=null,token=sessionStorage.getItem("apsan_gh_token")||"";
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function notify(msg,type=""){const n=$("notice");n.textContent=msg;n.className="notice "+type;}
+function headers(){return {"Accept":"application/vnd.github+json","Authorization":"Bearer "+token,"X-GitHub-Api-Version":"2022-11-28"};}
+function slug(s){return String(s||"conteudo").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,65)||"conteudo";}
+function yamlValue(v){return JSON.stringify(String(v??""));}
+function makeMarkdown(data,type){
+ const keys=TYPES[type].fields.filter(k=>k!=="body");
+ let front="---\n"+keys.map(k=>k+": "+(k==="published"?(data[k]?"true":"false"):yamlValue(data[k]||""))).join("\n")+"\n---\n";
+ return front+(type==="posts"?(data.body||""):"");
+}
+function parseMarkdown(text){
+ const m=text.match(/^---\s*\r?\n([\s\S]*?)\r?\n---\s*\r?\n?([\s\S]*)$/),o={};
+ if(!m)return {body:text};
+ m[1].split(/\r?\n/).forEach(line=>{const x=line.match(/^([\w-]+):\s*(.*)$/);if(x){let v=x[2];try{v=JSON.parse(v)}catch(e){}o[x[1]]=v;}});
+ o.body=m[2]||"";return o;
+}
+async function api(path,opts={}){
+ const r=await fetch(API+path,{...opts,headers:{...headers(),...(opts.headers||{})}});
+ const data=await r.json().catch(()=>({}));
+ if(!r.ok)throw new Error(data.message||("GitHub respondeu "+r.status));
+ return data;
+}
+async function load(){
+ $("connectionBadge").textContent="A consultar repositório…";
+ try{
+  const all=await Promise.all(Object.entries(TYPES).map(async([type,cfg])=>{
+   let files=[];try{files=await api(cfg.folder+"?ref="+BRANCH)}catch(e){if(String(e.message).includes("Not Found"))return [type,[]];throw e;}
+   const docs=await Promise.all(files.filter(f=>f.type==="file"&&f.name.endsWith(".md")).map(async f=>{
+    const r=await fetch(f.download_url+"?v="+Date.now(),{cache:"no-store"});const d=parseMarkdown(await r.text());return {...d,_filename:f.name,_sha:f.sha,_type:type};
+   }));
+   return [type,docs];
+  }));
+  items=Object.fromEntries(all);
+  $("countServices").textContent=items.services.length;$("countPosts").textContent=items.posts.length;$("countVideos").textContent=items.videos.length;
+  $("connectionBadge").textContent="Repositório ligado";$("connectionBadge").className="badge";
+  render();
+ }catch(e){$("connectionBadge").textContent="Falha de ligação";notify("Não foi possível carregar os conteúdos: "+e.message,"error");}
+}
+function render(){
+ const cfg=TYPES[tab],arr=items[tab]||[];
+ $("view").innerHTML='<div class="panel-head"><div><h3>'+cfg.label+'</h3><p>Cria, edita e publica conteúdos no site oficial.</p></div><button class="btn primary" id="newBtn">＋ Novo conteúdo</button></div><div class="toolbar"><input class="search" id="filter" placeholder="Pesquisar '+cfg.label.toLowerCase()+'…"><button class="btn soft" id="reloadList">↻</button></div><div class="list" id="list"></div>';
+ drawList(arr);
+ $("newBtn").onclick=()=>form();$("reloadList").onclick=load;
+ $("filter").oninput=e=>drawList(arr.filter(x=>JSON.stringify(x).toLowerCase().includes(e.target.value.toLowerCase())));
+}
+function drawList(arr){
+ const host=$("list");if(!arr.length){host.innerHTML='<div class="empty">Ainda não existem conteúdos nesta secção.<br>Seleciona “Novo conteúdo” para começar.</div>';return;}
+ host.innerHTML=arr.map((x,i)=>{
+ const title=x.title||"Sem título",sub=tab==="videos"?(x.url||"Vídeo YouTube"):tab==="posts"?(x.date||x.category||"Publicação"):(x.category||"Serviço");
+ const thumb=x.image||x.coverImage;
+ return '<article class="item"><div class="thumb">'+(thumb?'<img src="'+esc(thumb.startsWith("http")?thumb:RAW+"public/"+thumb)+'">':(tab==="videos"?"▶":tab==="posts"?"▤":"▦"))+'</div><div class="item-main"><strong>'+esc(title)+'</strong><small>'+esc(sub)+'</small><span class="badge '+(String(x.published)==="true"?"":"off")+'">'+(String(x.published)==="true"?"Publicado":"Rascunho")+'</span></div><div class="item-actions"><button class="btn soft" data-edit="'+i+'">Editar</button><button class="btn danger" data-del="'+i+'">Eliminar</button></div></article>';
+ }).join("");
+ host.querySelectorAll("[data-edit]").forEach(b=>b.onclick=()=>form(arr[+b.dataset.edit]));
+ host.querySelectorAll("[data-del]").forEach(b=>b.onclick=()=>removeItem(arr[+b.dataset.del]));
+}
+function form(item=null){
+ editing=item;const d=item||{published:true};
+ const f=(name,label,type="text",placeholder="")=>'<div class="field"><label>'+label+'</label><input id="f_'+name+'" type="'+type+'" value="'+esc(d[name]??"")+'" placeholder="'+esc(placeholder)+'"></div>';
+ const ta=(name,label,placeholder="")=>'<div class="field"><label>'+label+'</label><textarea id="f_'+name+'" placeholder="'+esc(placeholder)+'">'+esc(d[name]??"")+'</textarea></div>';
+ let fields="";
+ if(tab==="services")fields=f("title","Nome do serviço")+f("category","Categoria")+ta("summary","Descrição curta")+ta("details","Detalhes do serviço")+f("icon","Ícone Font Awesome","text","fas fa-briefcase")+'<div class="grid2">'+f("price","Preço (opcional)")+f("image","Imagem (URL ou caminho)")+'</div>';
+ if(tab==="posts")fields=f("title","Título")+ '<div class="grid2">'+f("date","Data","date")+f("category","Categoria")+'</div>'+ta("excerpt","Resumo")+f("coverImage","Imagem de capa (URL ou caminho)")+ta("body","Conteúdo completo");
+ if(tab==="videos")fields=f("title","Título do vídeo")+f("url","Link público do YouTube","url","https://www.youtube.com/watch?v=...")+ta("description","Descrição");
+ $("view").innerHTML='<div class="panel-head"><div><h3>'+(item?"Editar":"Novo")+ " · "+TYPES[tab].label+'</h3><p>Os campos assinalados devem ser preenchidos antes de guardar.</p></div><button class="btn soft" id="backBtn">← Voltar</button></div><div class="form-wrap">'+fields+'<div class="field"><label class="check"><input id="f_published" type="checkbox" '+(String(d.published)==="true"||(!item&&d.published!==false)?"checked":"")+'> Publicar no site oficial</label></div><div class="form-actions"><button class="btn primary" id="saveBtn">Guardar conteúdo</button><button class="btn soft" id="cancelBtn">Cancelar</button></div></div>';
+ $("backBtn").onclick=render;$("cancelBtn").onclick=render;$("saveBtn").onclick=save;
+}
+async function save(){
+ if(!token){notify("O painel está aberto sem login, mas para gravar no GitHub é necessário configurar o token nas definições de publicação.","warn");$("publishSettings").open=true;return;}
+ const data={};TYPES[tab].fields.forEach(k=>{const el=$("f_"+k);if(k==="published")data[k]=el.checked;else if(el)data[k]=el.value.trim();});
+ if(!data.title){notify("Indica um título antes de guardar.","error");return;}
+ if(tab==="videos"&&!youtubeId(data.url)){notify("Insere um link válido de um vídeo público do YouTube.","error");return;}
+ const btn=$("saveBtn");btn.disabled=true;btn.textContent="A guardar…";
+ try{
+  const filename=(editing?editing._filename:slug(data.title)+".md");
+  const path=TYPES[tab].folder+"/"+filename;
+  const payload={message:(editing?"Atualizar":"Publicar")+" "+TYPES[tab].label+": "+data.title,content:btoa(unescape(encodeURIComponent(makeMarkdown(data,tab))))};
+  if(editing)payload.sha=editing._sha;
+  await api(path,{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});
+  notify("Conteúdo guardado no repositório. O site oficial irá atualizar quando o conteúdo for consultado.","ok");
+  await load();
+ }catch(e){notify("Não foi possível guardar: "+e.message,"error");btn.disabled=false;btn.textContent="Guardar conteúdo";}
+}
+async function removeItem(item){
+ if(!confirm('Eliminar "'+(item.title||"este conteúdo")+'"? Esta ação não pode ser desfeita.'))return;
+ if(!token){notify("Configura o token GitHub nas definições para eliminar conteúdos.","warn");$("publishSettings").open=true;return;}
+ try{await api(TYPES[tab].folder+"/"+item._filename,{method:"DELETE",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:"Eliminar conteúdo: "+item.title,sha:item._sha})});notify("Conteúdo eliminado.","ok");await load();}
+ catch(e){notify("Não foi possível eliminar: "+e.message,"error");}
+}
+function youtubeId(url){try{const u=new URL(url);if(u.hostname.includes("youtu.be"))return u.pathname.slice(1);if(u.hostname.includes("youtube.com"))return u.searchParams.get("v")||(u.pathname.match(/\/(?:embed|shorts)\/([^/]+)/)||[])[1];}catch(e){}return null;}
+document.querySelectorAll(".navbtn").forEach(b=>b.onclick=()=>{tab=b.dataset.tab;document.querySelectorAll(".navbtn").forEach(x=>x.classList.toggle("active",x===b));render();});
+$("refreshBtn").onclick=load;$("saveToken").onclick=()=>{const v=$("githubToken").value.trim();if(!v){notify("Cola o token GitHub no campo antes de continuar.","warn");return;}token=v;sessionStorage.setItem("apsan_gh_token",v);$("githubToken").value="";notify("Autorização de publicação disponível apenas nesta sessão do navegador.","ok");};
+$("clearToken").onclick=()=>{token="";sessionStorage.removeItem("apsan_gh_token");$("githubToken").value="";notify("Token removido desta sessão.","ok");};
+if(token)notify("Token temporário carregado nesta sessão. O painel continua sem autenticação de acesso.","ok");
+load();
+</script>
+</body></html>
