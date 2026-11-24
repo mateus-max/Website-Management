@@ -1,6 +1,6 @@
 media:
   input: public/uploads
-  output: https://raw.githubusercontent.com/mateus-max/Website-Management/main/public/uploads
+  output: /uploads
   categories: ["image", "video"]
 
 content:
@@ -8,7 +8,10 @@ content:
     label: Serviços
     type: collection
     path: content/services
+    format: yaml-frontmatter
+    filename: "{primary}.md"
     view:
+      primary: title
       fields: [title, category, published]
     fields:
       - { name: title, label: Nome do serviço, type: string, required: true }
@@ -24,7 +27,10 @@ content:
     label: Publicações
     type: collection
     path: content/posts
+    format: yaml-frontmatter
+    filename: "{primary}.md"
     view:
+      primary: title
       fields: [title, date, published]
     fields:
       - { name: title, label: Título, type: string, required: true }
@@ -39,7 +45,10 @@ content:
     label: Vídeos YouTube
     type: collection
     path: content/videos
+    format: yaml-frontmatter
+    filename: "{primary}.md"
     view:
+      primary: title
       fields: [title, published]
     fields:
       - { name: title, label: Título do vídeo, type: string, required: true }
