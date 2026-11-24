@@ -33,13 +33,69 @@ input,textarea,select{width:100%;border:1px solid #d6e0ea;border-radius:10px;pad
 #apsanLogin button{width:100%;margin-top:18px;padding:13px;border:0;border-radius:10px;background:#0878c9;color:#fff;font-weight:800}
 #apsanLogin .login-error{color:#bd3540;font-size:12px;margin-top:12px;text-align:center;min-height:18px}
 #apsanLogout{background:#fff;color:#17395d}
+
+/* APSAN dashboard refresh */
+:root{--navy:#061d42;--navy2:#0a3470;--blue:#0868e8;--cyan:#28a8f5;--gold:#f4bd22;--ink:#102b55;--muted:#6b7d96;--bg:#f2f6ff;--line:#dce7f6;--green:#10a96b;--purple:#7040df;--orange:#f28a12}
+body{background:linear-gradient(135deg,#eef4ff 0%,#f8fbff 55%,#eaf2ff 100%);color:var(--ink)}
+.top{min-height:78px;padding:14px clamp(16px,3vw,34px);background:#fff;color:var(--navy);border-bottom:1px solid #dce7f6;box-shadow:0 4px 18px #0b2e5a0d}
+.brand{gap:12px}.logo{width:50px;height:50px;border-radius:14px;background:linear-gradient(145deg,#092b60,#0755b4);color:#fff;border:0;box-shadow:0 5px 14px #063c8528}
+.brand h1{font-size:19px;color:#092d63;font-weight:850}.brand p{color:#71839b}
+.top-actions .status{display:inline-flex;align-items:center;color:#13855c;background:#e8f8f0;border-radius:30px;padding:8px 12px;font-weight:750}
+.wrap{max-width:1500px;margin:26px auto;padding:0 24px 55px}
+.intro{margin-bottom:16px;align-items:center}.intro h2{font-size:30px;font-weight:850;letter-spacing:-.7px}.intro p{font-size:14px}
+#connectionBadge{padding:7px 12px;font-size:11px}
+.stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:18px 0 20px}
+.stat{position:relative;overflow:hidden;min-height:112px;padding:20px 22px;border:1px solid #e4ecf7;border-radius:18px;box-shadow:0 8px 22px #0c3c7510}
+.stat:after{content:"";position:absolute;width:100px;height:100px;border-radius:50%;right:-28px;top:-30px;background:linear-gradient(135deg,#e5f1ff,#f5f9ff)}
+.stat span{position:relative;z-index:1;font-size:13px;font-weight:650}.stat strong{position:relative;z-index:1;font-size:32px;color:#092e68;margin-top:8px}
+.layout{grid-template-columns:245px minmax(0,1fr);gap:20px}
+.side{background:linear-gradient(180deg,#061d42,#0a3470);border:0;border-radius:19px;padding:14px;box-shadow:0 12px 28px #092b5c20;min-height:430px}
+.navbtn{color:#d5e5fb;padding:14px 13px;border-radius:12px;font-size:14px;margin:4px 0}
+.navbtn .ico{font-size:19px}.navbtn.active{background:linear-gradient(100deg,#0878f9,#075bc6);color:#fff;box-shadow:0 7px 18px #0072f540}
+.navbtn:hover{background:#ffffff18;color:#fff}.side-note{color:#b5c9e3;border-color:#ffffff25}
+.panel{border:1px solid #e2eaf5;border-radius:20px;box-shadow:0 10px 28px #0a32600c;padding:24px}
+.panel-head{align-items:center;margin-bottom:17px}.panel-head h3{font-size:21px;color:#0a2d62}
+.btn{border-radius:11px;font-weight:750;padding:11px 15px}.btn.primary{background:linear-gradient(120deg,#087cf4,#075ac8);box-shadow:0 5px 13px #0874e52a}
+.btn.soft{background:#edf4ff;color:#174c88}.btn.danger{background:#fff0f0;color:#bd3c48}
+.notice{border:1px solid #dceafa;background:#edf6ff;color:#315c88;border-radius:14px;padding:14px 16px}
+.token-box{border-radius:15px;background:#f8fbff}
+.item{border-color:#e5edf7;border-radius:14px;padding:14px;background:#fff}
+.item:hover{border-color:#a9cbee;box-shadow:0 5px 15px #0b3c7010}
+.empty{background:#f9fbff;border-color:#c8d9ee}
+.footer{color:#8495ac}
+.hero-admin{display:flex;align-items:center;justify-content:space-between;gap:22px;min-height:190px;padding:28px 32px;margin:16px 0 20px;border-radius:22px;overflow:hidden;color:#fff;background:radial-gradient(circle at 78% 18%,#1b6fc1 0,transparent 33%),linear-gradient(110deg,#061d42 0%,#0b3976 62%,#0756ad 100%);box-shadow:0 12px 28px #092e6525;position:relative}
+.hero-admin:after{content:"";position:absolute;right:9%;top:-105px;width:330px;height:330px;border:2px solid #ffffff18;border-radius:50%;box-shadow:0 0 0 35px #ffffff08,0 0 0 70px #ffffff06}
+.hero-admin .hero-copy{position:relative;z-index:1;max-width:680px}.hero-admin .eyebrow{font-size:12px;font-weight:850;letter-spacing:1.7px;color:#f8c52e;text-transform:uppercase}
+.hero-admin h2{font-size:clamp(25px,3vw,38px);line-height:1.1;margin:10px 0;color:#fff;letter-spacing:-.8px}
+.hero-admin h2 span{color:#ffca28}.hero-admin p{margin:0;color:#d7e7fa;font-size:14px;line-height:1.6}
+.hero-admin .hero-mark{position:relative;z-index:1;width:110px;height:110px;display:grid;place-items:center;border:1px solid #ffffff35;border-radius:26px;background:#ffffff12;font-size:38px;color:#ffd04a;transform:rotate(4deg)}
+.hero-admin .hero-mark small{display:block;font-size:10px;letter-spacing:1px;color:#fff;font-weight:800}
+.quick-actions{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:0 0 20px}
+.quick-action{display:flex;align-items:center;gap:12px;text-decoration:none;padding:14px;border:1px solid #e1eafa;border-radius:15px;background:#fff;color:#133b70;box-shadow:0 6px 17px #0b3a7010;font-weight:800}
+.quick-action .qa-icon{width:40px;height:40px;flex:0 0 40px;border-radius:12px;display:grid;place-items:center;background:#e8f2ff;color:#0873e5;font-size:19px}
+.quick-action:nth-child(2) .qa-icon{background:#e5f8ef;color:#0b9d65}.quick-action:nth-child(3) .qa-icon{background:#f0eaff;color:#7040df}.quick-action:nth-child(4) .qa-icon{background:#fff3df;color:#dc8510}
+.quick-action small{display:block;color:#8190a4;font-size:10px;font-weight:550;margin-top:3px}
+@media(max-width:760px){
+ .top{padding:13px 15px;align-items:center}.brand{gap:9px}.logo{width:44px;height:44px;font-size:11px}.brand h1{font-size:16px}.brand p{font-size:11px;max-width:150px}.top-actions{gap:6px}.top-actions .btn{padding:10px 11px;font-size:12px}
+ .wrap{margin:18px auto;padding:0 12px 35px}.intro h2{font-size:25px}
+ .hero-admin{min-height:175px;padding:23px 20px;border-radius:18px;margin:14px 0 16px}.hero-admin .hero-mark{width:72px;height:72px;border-radius:20px;font-size:28px;flex:0 0 72px}.hero-admin h2{font-size:25px}.hero-admin p{font-size:12px;max-width:290px}
+ .stats{gap:8px}.stat{padding:13px 12px;min-height:95px;border-radius:14px}.stat span{font-size:11px}.stat strong{font-size:25px}
+ .layout{grid-template-columns:1fr;gap:12px}.side{position:static;display:flex;overflow-x:auto;gap:5px;padding:8px;border-radius:14px;min-height:0;scrollbar-width:thin}
+ .navbtn{flex:0 0 auto;white-space:nowrap;padding:11px 12px;font-size:12px;margin:0}.navbtn .ico{font-size:15px}
+ .panel{padding:15px;border-radius:16px}.panel-head h3{font-size:18px}
+ .quick-actions{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.quick-action{padding:10px;gap:8px;font-size:12px}.quick-action .qa-icon{width:34px;height:34px;flex-basis:34px;font-size:16px}.quick-action small{font-size:9px}
+}
+@media(max-width:390px){.hero-admin .hero-mark{display:none}.stats{grid-template-columns:repeat(3,minmax(0,1fr))}.stat{padding:11px 9px}.stat strong{font-size:22px}}
 </style>
 </head>
 <body>
 <div id="apsanLogin"><div class="login-card"><div class="login-logo">APSAN</div><h2>Área administrativa</h2><p>Entre com a sua conta autorizada APSAN.</p><form id="apsanLoginForm"><label for="apsanEmail">E-mail</label><input id="apsanEmail" type="email" autocomplete="username" required value="eduardo.gabriel@apsanlda.com"><label for="apsanPassword">Palavra-passe</label><input id="apsanPassword" type="password" autocomplete="current-password" required><button id="apsanLoginBtn" type="submit">Entrar no painel</button><div class="login-error" id="apsanLoginError"></div></form></div></div>
 <header class="top"><div class="brand"><div class="logo">APSAN</div><div><h1>APSAN · Gestão de Conteúdos</h1><p>Centro de publicação do website oficial</p></div></div><div class="top-actions"><span class="status">Painel de acesso direto · sem login</span><button class="btn soft" id="refreshBtn">↻ Atualizar</button></div></header>
 <main class="wrap">
-<div class="intro"><div><h2>Painel de controlo</h2><p>Gere os conteúdos que serão apresentados em apsanlda.com.</p></div><span class="badge" id="connectionBadge">A carregar dados…</span></div>
+<div class="intro"><div><h2>Painel de controlo</h2><p>Gere os conteúdos que serão apresentados em apsanlda.com.</p></div>
+<section class="hero-admin"><div class="hero-copy"><div class="eyebrow">APSAN · WEBSITE MANAGEMENT</div><h2>Bem-vindo ao seu <span>Painel de Gestão</span></h2><p>Gira produtos, serviços, publicações, vídeos e encomendas do website oficial com simplicidade e controlo.</p></div><div class="hero-mark">✦<small>APSAN · LDA</small></div></section>
+<section class="quick-actions"><a class="quick-action" href="#view" data-quick="services"><span class="qa-icon">＋</span><span>Novo serviço<small>Adicionar ao website</small></span></a><a class="quick-action" href="#view" data-quick="products"><span class="qa-icon">▣</span><span>Novo produto<small>Publicar na montra</small></span></a><a class="quick-action" href="#view" data-quick="posts"><span class="qa-icon">▤</span><span>Nova publicação<small>Partilhar novidades</small></span></a><a class="quick-action" href="#view" data-quick="videos"><span class="qa-icon">▶</span><span>Adicionar vídeo<small>YouTube no website</small></span></a></section>
+<span class="badge" id="connectionBadge">A carregar dados…</span></div>
 <section class="stats"><div class="stat"><span>Serviços</span><strong id="countServices">—</strong></div><div class="stat"><span>Publicações</span><strong id="countPosts">—</strong></div><div class="stat"><span>Vídeos YouTube</span><strong id="countVideos">—</strong></div></section>
 <div class="layout">
 <aside class="side">
@@ -240,4 +296,6 @@ window.apsanFirebase={auth,db,ref,get,set,push,update,remove,onValue};
 </script>
 <script type="module" src="products-admin.js?v=1"></script>
 <script type="module" src="orders-admin.js?v=2"></script>
+
+document.addEventListener("click",e=>{const q=e.target.closest("[data-quick]");if(!q)return;e.preventDefault();const target=q.dataset.quick;const nav=document.querySelector('.navbtn[data-tab="'+target+'"]');if(nav)nav.click();setTimeout(()=>{const b=document.getElementById("newBtn");if(b)b.click();},80);});
 </body></html>
