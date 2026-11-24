@@ -238,6 +238,6 @@ form.addEventListener("submit",async e=>{e.preventDefault();err.textContent="A v
 onAuthStateChanged(auth,user=>{if(user&&user.email?.toLowerCase()===allowedEmail){showGate(false);let logout=document.getElementById("apsanLogout");if(!logout){logout=document.createElement("button");logout.id="apsanLogout";logout.className="btn soft";logout.textContent="Terminar sessão";document.querySelector(".top-actions").appendChild(logout);logout.onclick=()=>signOut(auth);} }else{if(user)signOut(auth);showGate(true);}});
 window.apsanFirebase={auth,db,ref,get,set,push,update,remove,onValue};
 </script>
-<script type="module" src="products-admin.js"></script>
-<script type="module" src="orders-admin.js"></script>
+<script type="module" src="products-admin.js?v=1"></script>
+<script type="module" src="orders-admin.js?v=2"></script>
 </body></html>
