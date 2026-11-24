@@ -156,12 +156,13 @@ function previewSelectedImage(){
  if(file.size>8*1024*1024){notify("A imagem deve ter no máximo 8 MB. Reduz o tamanho e tenta novamente.","error");$("imageFile").value="";return;}
  const url=URL.createObjectURL(file);showImagePreview(url);
 }
-function showImagePreview(src){const host=$("uploadPreview");if(host)host.innerHTML='<img src="'+esc(src)+'" alt="Pré-visualização da imagem">';}
+function publicAsset(src){if(!src||/^https?:\\/\\//i.test(src)||src.startsWith("data:"))return src;return RAW+"public/"+src.replace(/^\\//,"");}
+function showImagePreview(src){src=publicAsset(src);const host=$("uploadPreview");if(host)host.innerHTML='<img src="'+esc(src)+'" alt="Pré-visualização da imagem">';}
 function previewContent(){
  const title=$("f_title")?.value||"Pré-visualização",summary=$("f_summary")?.value||$("f_excerpt")?.value||"",body=$("f_body")?.value||$("f_details")?.value||$("f_description")?.value||"";
  const imageField=tab==="services"?"image":tab==="posts"?"coverImage":null;
  const file=$("imageFile")?.files?.[0];const existing=imageField?$("f_"+imageField).value:"";
- const src=file?URL.createObjectURL(file):existing;
+ const src=file?URL.createObjectURL(file):publicAsset(existing);
  let box=$("livePreview");if(!box){box=document.createElement("div");box.id="livePreview";box.className="previewbox";$("view").querySelector(".form-wrap").appendChild(box);}
  box.innerHTML='<div class="preview-post"><small>PRÉ-VISUALIZAÇÃO · '+esc(TYPES[tab].label.toUpperCase())+'</small>'+(src?'<img src="'+esc(src)+'" alt="">':'')+'<h2>'+esc(title)+'</h2><p>'+esc(summary)+'</p><p>'+esc(body)+'</p>'+(tab==="videos"?'<p>Vídeo: '+esc($("f_url").value)+'</p>':'')+'</div>';
  box.scrollIntoView({behavior:"smooth",block:"nearest"});
