@@ -10,7 +10,7 @@
   const asset = (v) => {
     if (!v) return "";
     if (/^https?:\/\//i.test(v) || v.startsWith("data:")) return v;
-    return RAW + (v.startsWith("/") ? v.slice(1) : v);
+    return RAW + "public/" + (v.startsWith("/") ? v.slice(1) : v);
   };
   function parseMarkdown(text) {
     const match = text.match(/^---\s*\r?\n([\s\S]*?)\r?\n---\s*\r?\n?([\s\S]*)$/);
