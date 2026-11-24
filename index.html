@@ -187,7 +187,8 @@ async function save(){
  if(tab==="videos"&&!youtubeId(data.url)){notify("Insere um link válido de um vídeo público do YouTube.","error");return;}
  const btn=$("saveBtn");btn.disabled=true;btn.textContent="A guardar…";
  try{
-  const imageField=tab==="services"?"image":tab==="posts"?"coverImage":null;if(imageField){const uploaded=await uploadSelectedImage();if(uploaded)data[imageField]=uploaded;}\n  const filename=(editing?editing._filename:slug(data.title)+".md");
+  const imageField=tab==="services"?"image":tab==="posts"?"coverImage":null;if(imageField){const uploaded=await uploadSelectedImage();if(uploaded)data[imageField]=uploaded;}
+  const filename=(editing?editing._filename:slug(data.title)+".md");
   const path=TYPES[tab].folder+"/"+filename;
   const payload={message:(editing?"Atualizar":"Publicar")+" "+TYPES[tab].label+": "+data.title,content:btoa(unescape(encodeURIComponent(makeMarkdown(data,tab))))};
   if(editing)payload.sha=editing._sha;
