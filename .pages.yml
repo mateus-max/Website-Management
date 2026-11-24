@@ -1,0 +1,61 @@
+media:
+  input: public/uploads
+  output: https://raw.githubusercontent.com/mateus-max/Website-Management/main/public/uploads
+  categories: ["image", "video"]
+
+content:
+  - name: services
+    label: Serviços
+    type: collection
+    path: content/services
+    view:
+      fields: [title, category, published]
+    fields:
+      - { name: title, label: Nome do serviço, type: string, required: true }
+      - { name: category, label: Categoria, type: string }
+      - { name: summary, label: Descrição curta, type: text, required: true }
+      - { name: details, label: Detalhes do serviço, type: text }
+      - { name: icon, label: Ícone Font Awesome, type: string }
+      - { name: image, label: Imagem, type: image }
+      - { name: price, label: Preço (opcional), type: string }
+      - { name: published, label: Publicado no site, type: boolean }
+
+  - name: posts
+    label: Publicações
+    type: collection
+    path: content/posts
+    view:
+      fields: [title, date, published]
+    fields:
+      - { name: title, label: Título, type: string, required: true }
+      - { name: date, label: Data, type: date }
+      - { name: category, label: Categoria, type: string }
+      - { name: excerpt, label: Resumo, type: text }
+      - { name: coverImage, label: Imagem de capa, type: image }
+      - { name: published, label: Publicado no site, type: boolean }
+      - { name: body, label: Conteúdo, type: rich-text }
+
+  - name: videos
+    label: Vídeos YouTube
+    type: collection
+    path: content/videos
+    view:
+      fields: [title, published]
+    fields:
+      - { name: title, label: Título do vídeo, type: string, required: true }
+      - { name: url, label: Link do YouTube, type: string, required: true }
+      - { name: description, label: Descrição, type: text }
+      - { name: published, label: Publicado no site, type: boolean }
+
+  - name: banners
+    label: Banners e destaques
+    type: collection
+    path: content/banners
+    view:
+      fields: [title, published]
+    fields:
+      - { name: title, label: Título, type: string, required: true }
+      - { name: subtitle, label: Subtítulo, type: string }
+      - { name: image, label: Imagem, type: image }
+      - { name: link, label: Link de destino, type: string }
+      - { name: published, label: Publicado no site, type: boolean }
