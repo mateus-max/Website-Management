@@ -56,15 +56,3 @@ content:
       - { name: description, label: Descrição, type: text }
       - { name: published, label: Publicado no site, type: boolean }
 
-  - name: banners
-    label: Banners e destaques
-    type: collection
-    path: content/banners
-    view:
-      fields: [title, published]
-    fields:
-      - { name: title, label: Título, type: string, required: true }
-      - { name: subtitle, label: Subtítulo, type: string }
-      - { name: image, label: Imagem, type: image }
-      - { name: link, label: Link de destino, type: string }
-      - { name: published, label: Publicado no site, type: boolean }
