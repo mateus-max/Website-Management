@@ -1,24 +1,30 @@
 # APSAN Website Management
 
-Este repositório é a base de conteúdos do painel administrativo próprio da **APSAN, LDA**.
+Painel administrativo próprio da APSAN, LDA, com acesso direto e sem ecrã de login.
 
-## Objetivo
-O painel administrativo será desenvolvido neste projeto. Não será utilizado Pages CMS nem outro serviço externo de gestão de conteúdos.
+## Acesso
+O painel é servido pelo GitHub Pages deste repositório. Abra o endereço do Website-Management publicado pelo GitHub Pages.
 
-O painel próprio deverá permitir gerir:
-- Serviços;
-- Publicações, notícias e artigos;
-- Vídeos públicos do YouTube;
-- Imagens e conteúdos multimédia.
+## Funcionalidades
+- Criar, editar e eliminar serviços;
+- Criar, editar e eliminar notícias e artigos;
+- Publicar vídeos públicos do YouTube;
+- Marcar conteúdos como publicados ou rascunhos;
+- Consultar os conteúdos existentes no repositório.
 
-## Integração com o site oficial
-O site https://apsanlda.com lê os conteúdos públicos deste repositório através do ficheiro `apsan-sync.js`.
+## Publicação
+O painel não exige autenticação para ser aberto ou consultado. Para gravar alterações no repositório, é necessária uma autorização de escrita GitHub fornecida nas definições de publicação. O token fica apenas em `sessionStorage` nesta sessão do navegador e não é incluído no código nem no site oficial.
 
-Estrutura:
-- `content/services`: serviços publicados;
+Para o token, utilizar um Fine-grained Personal Access Token limitado ao repositório `mateus-max/Website-Management`, com permissões de Contents: Read and write. Não partilhar o token. Como o painel é público e não tem login, qualquer pessoa pode abrir a interface; só deve ser fornecida autorização de publicação a pessoas de confiança.
+
+## Integração com APSAN
+O site https://apsanlda.com consulta os conteúdos publicados através do ficheiro `apsan-sync.js`.
+
+Pastas:
+- `content/services`: serviços;
 - `content/posts`: notícias e artigos;
 - `content/videos`: vídeos YouTube;
-- `public/uploads`: imagens carregadas.
+- `public/uploads`: imagens.
 
-## Segurança
-Não colocar tokens, passwords, chaves privadas ou credenciais de acesso no JavaScript público do site. A futura publicação pelo painel próprio deverá utilizar uma camada segura de autenticação no servidor ou uma aplicação GitHub autorizada.
+## Nota
+O carregamento de imagens diretamente pelo painel será acrescentado numa próxima atualização. Por enquanto, os campos de imagem aceitam um URL público ou caminho de imagem já existente.
