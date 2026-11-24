@@ -47,6 +47,7 @@ input,textarea,select{width:100%;border:1px solid #d6e0ea;border-radius:10px;pad
 <button class="navbtn" data-tab="posts"><span class="ico">▤</span> Publicações</button>
 <button class="navbtn" data-tab="videos"><span class="ico">▶</span> Vídeos YouTube</button>
 <button class="navbtn" data-tab="products"><span class="ico">▣</span> Produtos e serviços</button>
+<button class="navbtn" data-tab="orders"><span class="ico">🛒</span> Encomendas</button>
 <div class="side-note">APSAN, LDA<br>Gestão editorial própria</div>
 </aside>
 <section class="panel">
@@ -238,4 +239,5 @@ onAuthStateChanged(auth,user=>{if(user&&user.email?.toLowerCase()===allowedEmail
 window.apsanFirebase={auth,db,ref,get,set,push,update,remove,onValue};
 </script>
 <script type="module" src="products-admin.js"></script>
+<script type="module" src="orders-admin.js"></script>
 </body></html>
