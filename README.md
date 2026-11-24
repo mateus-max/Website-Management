@@ -13,7 +13,6 @@ Este repositório é o centro de gestão de conteúdos do site oficial **https:/
 - `content/services`: serviços.
 - `content/posts`: notícias e artigos.
 - `content/videos`: vídeos públicos do YouTube.
-- `content/banners`: banners e destaques.
 - `public/uploads`: imagens carregadas pelo CMS.
 
 ## Site oficial
