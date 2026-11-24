@@ -22,9 +22,21 @@ input,textarea,select{width:100%;border:1px solid #d6e0ea;border-radius:10px;pad
 .notice{border-radius:11px;padding:12px 14px;font-size:12px;line-height:1.5;margin-bottom:15px;background:#eef6fc;color:#315b7e}.notice.warn{background:#fff7e8;color:#815d20}.notice.ok{background:#eaf8f0;color:#176b48}.notice.error{background:#fff0f0;color:#a33740}
 .token-box{background:#f8fafc;border:1px solid var(--line);border-radius:13px;padding:15px;margin-bottom:18px}.token-box summary{font-weight:750;color:#344b65;font-size:13px;cursor:pointer}.token-row{display:flex;gap:9px;margin-top:12px}.token-row input{flex:1}.footer{text-align:center;color:#8b98a8;font-size:11px;padding:22px}.uploadbox{border:1px dashed #b9c9d9;border-radius:12px;padding:13px;background:#f8fbfe;margin:0 0 15px}.uploadbox input{padding:8px;background:#fff}.previewbox{border:1px solid var(--line);border-radius:13px;padding:14px;margin-top:14px;background:#fbfdff}.previewbox img{max-width:100%;max-height:240px;object-fit:contain;border-radius:9px;display:block;margin:10px auto}.preview-post h2{color:var(--navy);margin:8px 0}.preview-post p{line-height:1.65;white-space:pre-wrap}.preview-video{position:relative;padding-top:56.25%;margin-top:12px;background:#071d3b;border-radius:10px;overflow:hidden}.preview-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.editor-tools{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}.editor-tools button{border:1px solid var(--line);background:#f4f7fa;border-radius:7px;padding:6px 9px;font-size:12px}.field textarea.editor{min-height:190px}.top .btn.soft{background:#ffffff;color:#153a5e}.help-line{font-size:11px;color:#6f8297;margin:6px 0 0}
 @media(max-width:760px){.top{align-items:flex-start}.status{display:none}.layout{grid-template-columns:1fr}.side{position:static;display:flex;overflow-x:auto;gap:5px;padding:8px}.navbtn{width:auto;white-space:nowrap;margin:0;padding:10px}.navbtn .ico{width:auto}.side-note{display:none}.stats{gap:8px}.stat{padding:12px}.stat strong{font-size:22px}.intro{align-items:flex-start;flex-direction:column}.item{gap:8px}.thumb{width:48px;height:48px;flex-basis:48px}.item-actions{flex-direction:column}.grid2{grid-template-columns:1fr}.token-row{flex-direction:column}}
+
+#apsanLogin{position:fixed;inset:0;z-index:99999;background:linear-gradient(135deg,#061a34,#0c3966);display:flex;align-items:center;justify-content:center;padding:20px}
+#apsanLogin .login-card{width:min(420px,100%);background:#fff;border-radius:22px;padding:30px;box-shadow:0 25px 70px #0005}
+#apsanLogin .login-logo{width:62px;height:62px;border-radius:16px;background:#071d3b;color:#fff;display:grid;place-items:center;font-weight:900;margin:0 auto 18px}
+#apsanLogin h2{text-align:center;color:#071d3b;margin:0 0 7px;font-size:23px}
+#apsanLogin p{text-align:center;color:#718096;font-size:13px;margin:0 0 22px}
+#apsanLogin label{display:block;font-size:12px;font-weight:750;color:#40546b;margin:13px 0 6px}
+#apsanLogin input{width:100%;padding:13px;border:1px solid #d6e0ea;border-radius:10px}
+#apsanLogin button{width:100%;margin-top:18px;padding:13px;border:0;border-radius:10px;background:#0878c9;color:#fff;font-weight:800}
+#apsanLogin .login-error{color:#bd3540;font-size:12px;margin-top:12px;text-align:center;min-height:18px}
+#apsanLogout{background:#fff;color:#17395d}
 </style>
 </head>
 <body>
+<div id="apsanLogin"><div class="login-card"><div class="login-logo">APSAN</div><h2>Área administrativa</h2><p>Entre com a sua conta autorizada APSAN.</p><form id="apsanLoginForm"><label for="apsanEmail">E-mail</label><input id="apsanEmail" type="email" autocomplete="username" required value="eduardo.gabriel@apsanlda.com"><label for="apsanPassword">Palavra-passe</label><input id="apsanPassword" type="password" autocomplete="current-password" required><button id="apsanLoginBtn" type="submit">Entrar no painel</button><div class="login-error" id="apsanLoginError"></div></form></div></div>
 <header class="top"><div class="brand"><div class="logo">APSAN</div><div><h1>APSAN · Gestão de Conteúdos</h1><p>Centro de publicação do website oficial</p></div></div><div class="top-actions"><span class="status">Painel de acesso direto · sem login</span><button class="btn soft" id="refreshBtn">↻ Atualizar</button></div></header>
 <main class="wrap">
 <div class="intro"><div><h2>Painel de controlo</h2><p>Gere os conteúdos que serão apresentados em apsanlda.com.</p></div><span class="badge" id="connectionBadge">A carregar dados…</span></div>
@@ -210,5 +222,18 @@ $("clearToken").onclick=()=>{token="";sessionStorage.removeItem("apsan_gh_token"
 if(token)notify("Token temporário carregado nesta sessão. O painel continua sem autenticação de acesso.","ok");
 load();
 </script>
-</body></html  const video=tab==="videos"?youtubeId($("f_url").value):null;
-  box.innerHTML='<div class="preview-post"><small>PRÉ-VISUALIZAÇÃO · '+esc(TYPES[tab].label.toUpperCase())+'</small>'+(src?'<img src="'+esc(src)+'" alt="">':'')+'<h2>'+esc(title)+'</h2><p>'+esc(summary)+'</p><p>'+esc(body)+'</p>'+(video?'<div class="preview-video"><iframe src="https://www.youtube-nocookie.com/embed/'+encodeURIComponent(video)+'" title="Pré-visualização do vídeo" allowfullscreen></iframe></div>':'')+'</div>';>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+import { getDatabase, ref, get, set } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
+const firebaseConfig={apiKey:"AIzaSyBe28uhKKzOycocioX0YyyUZ0jmODDAnCM",authDomain:"apsan-web-manegment.firebaseapp.com",databaseURL:"https://apsan-web-manegment-default-rtdb.firebaseio.com",projectId:"apsan-web-manegment",storageBucket:"apsan-web-manegment.firebasestorage.app",messagingSenderId:"1026894206568",appId:"1:1026894206568:web:a8896e7caf7f14d6118ddd",measurementId:"G-RCCH3ME0MR"};
+const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getDatabase(app);
+const allowedEmail="eduardo.gabriel@apsanlda.com";
+const gate=document.getElementById("apsanLogin"),form=document.getElementById("apsanLoginForm"),err=document.getElementById("apsanLoginError"),btn=document.getElementById("apsanLoginBtn");
+function showGate(show){gate.style.display=show?"flex":"none";document.querySelector(".top").style.display=show?"none":"";document.querySelector(".wrap").style.display=show?"none":"";}
+form.addEventListener("submit",async e=>{e.preventDefault();err.textContent="A validar credenciais…";btn.disabled=true;try{const email=document.getElementById("apsanEmail").value.trim().toLowerCase();if(email!==allowedEmail)throw new Error("Esta conta não está autorizada.");await signInWithEmailAndPassword(auth,email,document.getElementById("apsanPassword").value);err.textContent="";}catch(ex){err.textContent=ex.code==="auth/invalid-credential"?"E-mail ou palavra-passe incorretos.":ex.message||"Não foi possível iniciar sessão.";}finally{btn.disabled=false;}});
+onAuthStateChanged(auth,user=>{if(user&&user.email?.toLowerCase()===allowedEmail){showGate(false);let logout=document.getElementById("apsanLogout");if(!logout){logout=document.createElement("button");logout.id="apsanLogout";logout.className="btn soft";logout.textContent="Terminar sessão";document.querySelector(".top-actions").appendChild(logout);logout.onclick=()=>signOut(auth);} }else{if(user)signOut(auth);showGate(true);}});
+window.apsanFirebase={auth,db,ref,get,set};
+</script>
+</body></html>
