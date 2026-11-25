@@ -185,7 +185,7 @@ function form(item=null){
  const f=(name,label,type="text",placeholder="")=>'<div class="field"><label>'+label+'</label><input id="f_'+name+'" type="'+type+'" value="'+esc(d[name]??"")+'" placeholder="'+esc(placeholder)+'"></div>';
  const ta=(name,label,placeholder="")=>'<div class="field"><label>'+label+'</label><textarea id="f_'+name+'" placeholder="'+esc(placeholder)+'">'+esc(d[name]??"")+'</textarea></div>';
  let fields="";
- if(tab==="services")fields=f("title","Nome do serviço")+f("category","Categoria")+ta("summary","Descrição curta")+ta("details","Detalhes do serviço")+f("icon","Ícone Font Awesome","text","fas fa-briefcase")+'<div class="grid2">'+f("price","Preço (opcional)")+f("image","Imagem (URL ou caminho)")+'</div>';
+ if(tab==="services")fields=f("title","Nome do serviço")+f("category","Categoria")+ta("summary","Descrição curta")+ta("details","Detalhes do serviço")+f("icon","Ícone Font Awesome","text","fas fa-briefcase")+'<div class="grid2">'+f("price","Preço (opcional)")+f("image","Imagem (URL directa da fotografia)")+'</div>';
  if(tab==="posts")fields=f("title","Título")+ '<div class="grid2">'+f("date","Data","date")+f("category","Categoria")+'</div>'+ta("excerpt","Resumo")+f("coverImage","Imagem de capa (URL ou caminho)")+ta("body","Conteúdo completo");
  if(tab==="videos")fields=f("title","Título do vídeo")+f("url","Link público do YouTube","url","https://www.youtube.com/watch?v=...")+ta("description","Descrição");
  $("view").innerHTML='<div class="panel-head"><div><h3>'+(item?"Editar":"Novo")+ " · "+TYPES[tab].label+'</h3><p>Os campos assinalados devem ser preenchidos antes de guardar.</p></div><button class="btn soft" id="backBtn">← Voltar</button></div><div class="form-wrap">'+fields+'<div id="uploadArea"></div><div class="field"><label class="check"><input id="f_published" type="checkbox" '+(String(d.published)==="true"||(!item&&d.published!==false)?"checked":"")+'> Publicar no site oficial</label></div><div class="form-actions"><button class="btn primary" id="saveBtn">Guardar conteúdo</button><button class="btn soft" id="cancelBtn">Cancelar</button></div></div>';
@@ -227,7 +227,7 @@ function previewSelectedImage(){
  const url=URL.createObjectURL(file);showImagePreview(url);
 }
 function publicAsset(src){
- if(!src||src.startsWith("http://")||src.startsWith("https://")||src.startsWith("data:"))return src;
+ if(!src||src.startsWith("http://")||src.startsWith("https://")||src.startsWith("data:")||src.startsWith("blob:"))return src;
  return RAW+"public/"+src.replace(/^\//,"");
 }
 function showImagePreview(src){src=publicAsset(src);const host=$("uploadPreview");if(host)host.innerHTML='<img src="'+esc(src)+'" alt="Pré-visualização da imagem">';}
