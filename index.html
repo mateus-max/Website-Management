@@ -297,5 +297,7 @@ window.apsanFirebase={auth,db,ref,get,set,push,update,remove,onValue};
 <script type="module" src="products-admin.js?v=1"></script>
 <script type="module" src="orders-admin.js?v=2"></script>
 
+<script>
 document.addEventListener("click",e=>{const q=e.target.closest("[data-quick]");if(!q)return;e.preventDefault();const target=q.dataset.quick;const nav=document.querySelector('.navbtn[data-tab="'+target+'"]');if(nav)nav.click();setTimeout(()=>{const b=document.getElementById("newBtn");if(b)b.click();},80);});
+</script>
 </body></html>
