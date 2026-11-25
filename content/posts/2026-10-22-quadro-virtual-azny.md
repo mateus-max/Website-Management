@@ -3,7 +3,7 @@ title: "Quadro Virtual AZNY — Plataforma de Aulas Online"
 date: "22/10/2026"
 category: "Novidade"
 excerpt: "Conheça o Quadro Virtual AZNY: uma plataforma interactiva para dar aulas online, escrever, desenhar, apresentar documentos e ensinar em tempo real."
-coverImage: "https://apsanlda.com/assets/Sala%20Virtual%20em%20Todos%20os%20Dispositivos.png"
+coverImage: "https://raw.githubusercontent.com/apsanlda1-ctrl/APSAN-LDA/main/public/assets/Sala%20Virtual%20em%20Todos%20os%20Dispositivos.png"
 published: true
 ---
 📚💻 **CONHEÇA O QUADRO VIRTUAL AZNY!**
