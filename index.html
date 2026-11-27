@@ -123,6 +123,24 @@ body.admin-section-open .wrap{margin-top:16px}
 body.admin-section-open .layout{display:block!important}
 body.admin-section-open .layout>.panel{width:100%;min-height:calc(100vh - 115px);margin:0}
 body.admin-section-open .panel-head{margin-bottom:16px}
+
+/* Minimal dashboard by default; a single selected section when navigating */
+body:not(.admin-section-open) .wrap>.intro,
+body:not(.admin-section-open) .wrap>.stats,
+body:not(.admin-section-open) .wrap>.layout{display:none!important}
+body:not(.admin-section-open) .wrap{min-height:calc(100vh - 100px);display:flex;align-items:flex-start;padding-top:36px}
+body:not(.admin-section-open) .footer{display:none!important}
+body:not(.admin-section-open) .wrap:before{content:"APSAN · WEBSITE MANAGEMENT";display:block;width:100%;padding:26px 22px;border-radius:18px;background:linear-gradient(120deg,#071d3b,#0878c9);color:#fff;font-size:20px;font-weight:900;letter-spacing:.5px;box-shadow:0 12px 30px #092d5520}
+body.admin-section-open .wrap>.intro,
+body.admin-section-open .wrap>.stats,
+body.admin-section-open .footer{display:none!important}
+body.admin-section-open .wrap{display:block;min-height:calc(100vh - 90px);padding-top:18px}
+body.admin-section-open .layout{display:block!important;margin:0!important}
+body.admin-section-open .layout>.panel{display:block!important;width:100%;min-height:calc(100vh - 125px);margin:0!important;padding:clamp(12px,2.5vw,24px)!important}
+body.admin-section-open #notice,
+body.admin-section-open #publishSettings{display:none!important}
+body.admin-section-open #view{display:block!important;width:100%;margin:0!important}
+body.admin-section-open .side{display:block}
 </style>
 </head>
 <body>
@@ -312,7 +330,7 @@ async function removeItem(item){
  catch(e){notify("Não foi possível eliminar: "+e.message,"error");}
 }
 function youtubeId(url){try{const u=new URL(url);if(u.hostname.includes("youtu.be"))return u.pathname.slice(1);if(u.hostname.includes("youtube.com"))return u.searchParams.get("v")||(u.pathname.match(/\/(?:embed|shorts)\/([^/]+)/)||[])[1];}catch(e){}return null;}
-document.querySelectorAll(".navbtn").forEach(b=>b.onclick=()=>{tab=b.dataset.tab;document.body.classList.add("admin-section-open");document.querySelectorAll(".navbtn").forEach(x=>x.classList.toggle("active",x===b));render();});
+document.querySelectorAll(".navbtn").forEach(b=>b.onclick=()=>{tab=b.dataset.tab;document.body.classList.add("admin-section-open");document.querySelectorAll(".navbtn").forEach(x=>x.classList.toggle("active",x===b));closeAdminMenu();render();});
 const adminMenu=$("adminSideMenu"),adminBackdrop=$("adminMenuBackdrop"),menuToggle=$("adminMenuToggle"),profilePopover=$("adminProfilePopover");
 function closeAdminMenu(){adminMenu.classList.remove("open");adminBackdrop.classList.remove("open");menuToggle.setAttribute("aria-expanded","false");}
 menuToggle.onclick=()=>{const opening=!adminMenu.classList.contains("open");adminMenu.classList.toggle("open",opening);adminBackdrop.classList.toggle("open",opening);menuToggle.setAttribute("aria-expanded",String(opening));};
