@@ -9,7 +9,7 @@ function statusLabel(p){return p.status==="approved"?"Aprovada":p.status==="revi
 function field(icon,label,value){return '<div class="aps-detail-field"><span class="aps-detail-icon">'+icon+'</span><div><small>'+esc(label)+'</small><strong>'+esc(Array.isArray(value)?value.join(", "):value||"Não indicado")+'</strong></div></div>'}
 function open(){
  var v=document.getElementById("view");
- v.innerHTML='<div class="aps-appointments aps-service-appointments"><div class="aps-appointments-head"><button type="button" class="btn soft aps-appointments-home" id="apsServiceHome">← Início</button><div class="aps-appointments-title"><span class="aps-title-icon">▤</span><h2>Solicitações de Serviços</h2></div><button class="btn soft aps-refresh" id="apsServiceRefresh" aria-label="Actualizar" title="Actualizar">↻</button></div><div id="apsServiceList" class="aps-appointments-list">A carregar solicitações…</div><div id="apsServiceDetail"></div></div>';
+ v.innerHTML='<div class="aps-appointments aps-service-appointments"><div class="aps-appointments-head"><div class="aps-appointments-title"><span class="aps-title-icon">▤</span><h2>Solicitações de Serviços</h2></div><button class="btn soft aps-refresh" id="apsServiceRefresh" aria-label="Actualizar" title="Actualizar">↻</button></div><div id="apsServiceList" class="aps-appointments-list">A carregar solicitações…</div><div id="apsServiceDetail"></div></div>';
  document.getElementById("apsServiceRefresh").onclick=load;
  document.getElementById("apsServiceHome").onclick=function(){var b=document.querySelector('.navbtn[data-tab="home"]');if(b)b.click();else{var back=document.getElementById("workspaceBack");if(back)back.click()}};
  load();
