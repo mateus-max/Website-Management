@@ -11,7 +11,35 @@
 .brand{display:flex;align-items:center;gap:13px}.logo{width:48px;height:48px;border-radius:13px;background:#fff;display:grid;place-items:center;color:var(--navy);font-weight:900;font-size:13px;border:2px solid #ffffff55}.brand h1{font-size:18px;margin:0;letter-spacing:.3px}.brand p{margin:3px 0 0;color:#c5d8eb;font-size:12px}.top-actions{display:flex;align-items:center;gap:9px}.status{font-size:12px;color:#d5e7f7}
 .wrap{max-width:1320px;margin:25px auto;padding:0 18px 50px}.intro{display:flex;justify-content:space-between;align-items:end;gap:15px;margin-bottom:20px}.intro h2{margin:0;font-size:25px;color:var(--navy)}.intro p{margin:6px 0 0;color:var(--muted);font-size:14px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}.stat{background:white;border:1px solid var(--line);border-radius:15px;padding:17px 19px;box-shadow:0 5px 16px #0a2b5010}.stat span{font-size:12px;color:var(--muted)}.stat strong{display:block;font-size:27px;color:var(--navy);margin-top:5px}
-.layout{display:grid;grid-template-columns:235px minmax(0,1fr);gap:18px;align-items:start}.side,.panel{background:white;border:1px solid var(--line);border-radius:17px;box-shadow:0 5px 20px #0a2b500c}.side{padding:12px;position:sticky;top:14px}.navbtn{width:100%;display:flex;align-items:center;gap:11px;border:0;background:transparent;color:#52647a;text-align:left;padding:13px 12px;border-radius:11px;font-weight:650;margin:2px 0}.navbtn .ico{width:23px;text-align:center;font-size:17px}.navbtn.active{background:#eaf4fc;color:#075da2}.navbtn:hover{background:#f1f6fa}.side-note{border-top:1px solid var(--line);margin-top:12px;padding:13px 9px 5px;color:#77869a;font-size:11px;line-height:1.5}
+
+/* APSAN responsive management navigation */
+.top{position:relative;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:15px;padding:18px clamp(16px,4vw,34px);background:#fff;border-bottom:1px solid var(--line)}
+.top-actions{position:relative;display:flex;align-items:center;gap:10px}
+.top-icon{position:relative;width:46px;height:46px;border:1px solid #d9e7f7;border-radius:50%;background:#edf5ff;color:#075da2;font-size:22px;font-weight:800;display:grid;place-items:center;cursor:pointer}
+.top-icon.menu-trigger{background:#07366f;color:#fff;border-color:#1677c9;width:50px;height:50px;font-size:24px}
+.top-dot{position:absolute;right:8px;top:7px;width:9px;height:9px;border-radius:50%;background:#e52d3b;border:2px solid white}
+.profile-popover{position:absolute;right:54px;top:58px;z-index:50;min-width:230px;padding:15px;border:1px solid #dbe7f4;border-radius:14px;background:#fff;box-shadow:0 15px 40px #092d5530;display:grid;gap:8px}
+.profile-popover[hidden]{display:none}.profile-popover strong{color:#092d55}.profile-popover small{color:#718198;font-size:11px;overflow-wrap:anywhere}
+.drawer-title{display:flex;align-items:center;justify-content:space-between;padding:8px 8px 14px;margin-bottom:8px;border-bottom:1px solid var(--line);color:#092e61}
+.drawer-title button{border:0;border-radius:50%;width:34px;height:34px;background:#edf4fb;color:#153c68;font-size:24px;cursor:pointer}
+.menu-backdrop{position:fixed;inset:0;background:#071d38a8;z-index:39;opacity:0;visibility:hidden;transition:.2s}
+.menu-backdrop.open{opacity:1;visibility:visible}
+.layout{display:block!important;position:relative}
+.side{position:fixed!important;z-index:40;top:0;right:0;bottom:0;width:min(340px,88vw);overflow-y:auto;border-radius:20px 0 0 20px!important;padding:18px!important;transform:translateX(105%);transition:transform .25s ease;box-shadow:-15px 0 45px #001b3b30!important}
+.side.open{transform:translateX(0)}
+.side .navbtn{width:100%;justify-content:flex-start;padding:14px 12px;font-size:14px;border-radius:12px}
+.side .side-note{margin-top:18px}
+.panel{width:100%;min-width:0}
+@media(max-width:760px){
+ .top{padding:13px 14px;gap:8px}.brand{gap:9px}.brand h1{font-size:16px}.brand p{font-size:9px;max-width:155px;line-height:1.35}
+ .top-actions{gap:6px}.top-icon{width:37px;height:37px;font-size:18px}.top-icon.menu-trigger{width:42px;height:42px;font-size:21px}
+ .top-actions #refreshBtn{display:none}
+ .profile-popover{right:46px;top:50px}
+ .layout{grid-template-columns:1fr;gap:12px}.side{display:block!important;min-height:0}
+ .panel{padding:15px;border-radius:16px}
+}
+@media(max-width:390px){.top-icon{width:34px;height:34px}.top-icon.menu-trigger{width:39px;height:39px}.brand p{max-width:125px}}
+.side,.panel{background:white;border:1px solid var(--line);border-radius:17px;box-shadow:0 5px 20px #0a2b500c}.side{padding:12px}.navbtn{width:100%;display:flex;align-items:center;gap:11px;border:0;background:transparent;color:#52647a;text-align:left;padding:13px 12px;border-radius:11px;font-weight:650;margin:2px 0}.navbtn .ico{width:23px;text-align:center;font-size:17px}.navbtn.active{background:#eaf4fc;color:#075da2}.navbtn:hover{background:#f1f6fa}.side-note{border-top:1px solid var(--line);margin-top:12px;padding:13px 9px 5px;color:#77869a;font-size:11px;line-height:1.5}
 .panel{padding:clamp(16px,3vw,27px);min-height:540px}.panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px}.panel-head h3{margin:0;color:var(--navy);font-size:20px}.panel-head p{margin:5px 0 0;color:var(--muted);font-size:13px}
 .btn{border:0;border-radius:10px;padding:10px 15px;font-weight:700;font-size:13px;display:inline-flex;align-items:center;justify-content:center;gap:7px}.primary{background:var(--blue);color:white}.primary:hover{background:#0565aa}.soft{background:#edf3f8;color:#24415f}.danger{background:#fff0f0;color:var(--red)}.gold{background:var(--gold);color:#172b45}.btn:disabled{opacity:.5;cursor:not-allowed}
 .toolbar{display:flex;gap:10px;align-items:center;margin-bottom:15px}.search{flex:1;min-width:0}
@@ -80,8 +108,6 @@ body{background:linear-gradient(135deg,#eef4ff 0%,#f8fbff 55%,#eaf2ff 100%);colo
  .wrap{margin:18px auto;padding:0 12px 35px}.intro h2{font-size:25px}
  .hero-admin{min-height:175px;padding:23px 20px;border-radius:18px;margin:14px 0 16px}.hero-admin .hero-mark{width:72px;height:72px;border-radius:20px;font-size:28px;flex:0 0 72px}.hero-admin h2{font-size:25px}.hero-admin p{font-size:12px;max-width:290px}
  .stats{gap:8px}.stat{padding:13px 12px;min-height:95px;border-radius:14px}.stat span{font-size:11px}.stat strong{font-size:25px}
- .layout{grid-template-columns:1fr;gap:12px}.side{position:static;display:flex;overflow-x:auto;gap:5px;padding:8px;border-radius:14px;min-height:0;scrollbar-width:thin}
- .navbtn{flex:0 0 auto;white-space:nowrap;padding:11px 12px;font-size:12px;margin:0}.navbtn .ico{font-size:15px}
  .panel{padding:15px;border-radius:16px}.panel-head h3{font-size:18px}
  .quick-actions{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.quick-action{padding:10px;gap:8px;font-size:12px}.quick-action .qa-icon{width:34px;height:34px;flex-basis:34px;font-size:16px}.quick-action small{font-size:9px}
 }
@@ -90,7 +116,7 @@ body{background:linear-gradient(135deg,#eef4ff 0%,#f8fbff 55%,#eaf2ff 100%);colo
 </head>
 <body>
 <div id="apsanLogin"><div class="login-card"><div class="login-logo">APSAN</div><h2>Área administrativa</h2><p>Entre com a sua conta autorizada APSAN.</p><form id="apsanLoginForm"><label for="apsanEmail">E-mail</label><input id="apsanEmail" type="email" autocomplete="username" required value="eduardo.gabriel@apsanlda.com"><label for="apsanPassword">Palavra-passe</label><input id="apsanPassword" type="password" autocomplete="current-password" required><button id="apsanLoginBtn" type="submit">Entrar no painel</button><div class="login-error" id="apsanLoginError"></div></form></div></div>
-<header class="top"><div class="brand"><div class="logo">APSAN</div><div><h1>APSAN · Gestão de Conteúdos</h1><p>Centro de publicação do website oficial</p></div></div><div class="top-actions"><span class="status">Painel de acesso direto · sem login</span><button class="btn soft" id="refreshBtn">↻ Atualizar</button></div></header>
+<header class="top"><div class="brand"><div class="logo">APSAN</div><div><h1>APSAN, LDA</h1><p>WEBSITE MANAGEMENT · Gestão do Website Oficial</p></div></div><div class="top-actions"><button class="top-icon" id="adminNotifications" type="button" aria-label="Notificações" title="Notificações">♧<span class="top-dot"></span></button><button class="top-icon" id="adminProfile" type="button" aria-label="Perfil do administrador" title="Perfil">♙</button><button class="top-icon menu-trigger" id="adminMenuToggle" type="button" aria-label="Abrir menu" aria-expanded="false" title="Menu">☰</button><button class="btn soft" id="refreshBtn">↻ Actualizar</button><div class="profile-popover" id="adminProfilePopover" hidden><strong>Administrador APSAN</strong><small>eduardo.gabriel@apsanlda.com</small><button type="button" class="btn soft" id="profileLogout">Terminar sessão</button></div></div></header>
 <main class="wrap">
 <div class="intro"><div><h2>Painel de controlo</h2><p>Gere os conteúdos que serão apresentados em apsanlda.com.</p></div>
 <section class="hero-admin"><div class="hero-copy"><div class="eyebrow">APSAN · WEBSITE MANAGEMENT</div><h2>Bem-vindo ao seu <span>Painel de Gestão</span></h2><p>Gira produtos, serviços, publicações, vídeos e encomendas do website oficial com simplicidade e controlo.</p></div><div class="hero-mark">✦<small>APSAN · LDA</small></div></section>
@@ -98,7 +124,7 @@ body{background:linear-gradient(135deg,#eef4ff 0%,#f8fbff 55%,#eaf2ff 100%);colo
 <span class="badge" id="connectionBadge">A carregar dados…</span></div>
 <section class="stats"><div class="stat"><span>Serviços</span><strong id="countServices">—</strong></div><div class="stat"><span>Publicações</span><strong id="countPosts">—</strong></div><div class="stat"><span>Vídeos YouTube</span><strong id="countVideos">—</strong></div></section>
 <div class="layout">
-<aside class="side">
+<div class="menu-backdrop" id="adminMenuBackdrop"></div><aside class="side" id="adminSideMenu"><div class="drawer-title"><strong>Gestão da Plataforma</strong><button type="button" id="adminMenuClose" aria-label="Fechar menu">×</button></div>
 <button class="navbtn active" data-tab="services"><span class="ico">▦</span> Serviços</button>
 <button class="navbtn" data-tab="posts"><span class="ico">▤</span> Publicações</button>
 <button class="navbtn" data-tab="videos"><span class="ico">▶</span> Vídeos YouTube</button>
@@ -276,6 +302,16 @@ async function removeItem(item){
 }
 function youtubeId(url){try{const u=new URL(url);if(u.hostname.includes("youtu.be"))return u.pathname.slice(1);if(u.hostname.includes("youtube.com"))return u.searchParams.get("v")||(u.pathname.match(/\/(?:embed|shorts)\/([^/]+)/)||[])[1];}catch(e){}return null;}
 document.querySelectorAll(".navbtn").forEach(b=>b.onclick=()=>{tab=b.dataset.tab;document.querySelectorAll(".navbtn").forEach(x=>x.classList.toggle("active",x===b));render();});
+const adminMenu=$("adminSideMenu"),adminBackdrop=$("adminMenuBackdrop"),menuToggle=$("adminMenuToggle"),profilePopover=$("adminProfilePopover");
+function closeAdminMenu(){adminMenu.classList.remove("open");adminBackdrop.classList.remove("open");menuToggle.setAttribute("aria-expanded","false");}
+menuToggle.onclick=()=>{const opening=!adminMenu.classList.contains("open");adminMenu.classList.toggle("open",opening);adminBackdrop.classList.toggle("open",opening);menuToggle.setAttribute("aria-expanded",String(opening));};
+$("adminMenuClose").onclick=closeAdminMenu;adminBackdrop.onclick=closeAdminMenu;
+document.querySelectorAll(".navbtn").forEach(b=>b.addEventListener("click",closeAdminMenu));
+$("adminProfile").onclick=()=>{profilePopover.hidden=!profilePopover.hidden;};
+$("adminNotifications").onclick=()=>{const b=document.querySelector('.navbtn[data-tab="appointments"]');if(b)b.click();else notify("Não existem notificações novas.","ok");};
+$("profileLogout").onclick=()=>{const logout=document.getElementById("apsanLogout");if(logout)logout.click();else notify("A sessão administrativa será terminada ao sair do painel.","warn");};
+document.addEventListener("click",e=>{if(!e.target.closest("#adminProfile")&&!e.target.closest("#adminProfilePopover"))profilePopover.hidden=true;});
+
 $("refreshBtn").onclick=load;$("saveToken").onclick=()=>{const v=$("githubToken").value.trim();if(!v){notify("Cola o token GitHub no campo antes de continuar.","warn");return;}token=v;sessionStorage.setItem("apsan_gh_token",v);$("githubToken").value="";notify("Autorização de publicação disponível apenas nesta sessão do navegador.","ok");};
 $("clearToken").onclick=()=>{token="";sessionStorage.removeItem("apsan_gh_token");$("githubToken").value="";notify("Token removido desta sessão.","ok");};
 if(token)notify("Token temporário carregado nesta sessão. O painel continua sem autenticação de acesso.","ok");
