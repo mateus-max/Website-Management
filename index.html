@@ -104,6 +104,7 @@ body{background:linear-gradient(135deg,#eef4ff 0%,#f8fbff 55%,#eaf2ff 100%);colo
 <button class="navbtn" data-tab="videos"><span class="ico">▶</span> Vídeos YouTube</button>
 <button class="navbtn" data-tab="products"><span class="ico">▣</span> Produtos e serviços</button>
 <button class="navbtn" data-tab="orders"><span class="ico">🛒</span> Encomendas</button>
+<button class="navbtn" data-tab="appointments"><span class="ico">🩺</span> Agendamentos de Consultas</button>
 <div class="side-note">APSAN, LDA<br>Gestão editorial própria</div>
 </aside>
 <section class="panel">
@@ -295,6 +296,7 @@ onAuthStateChanged(auth,user=>{if(user&&user.email?.toLowerCase()===allowedEmail
 window.apsanFirebase={auth,db,ref,get,set,push,update,remove,onValue};
 </script>
 <script type="module" src="products-admin.js?v=1"></script>
+<script src="appointments-admin.js?v=1"></script>
 <script src="videos-admin.js?v=1"></script>
 <script type="module" src="orders-admin.js?v=2"></script>
 
