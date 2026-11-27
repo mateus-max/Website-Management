@@ -128,9 +128,9 @@ body.admin-section-open .panel-head{margin-bottom:16px}
 body:not(.admin-section-open) .wrap>.intro,
 body:not(.admin-section-open) .wrap>.stats,
 body:not(.admin-section-open) .wrap>.layout{display:none!important}
-body:not(.admin-section-open) .wrap{min-height:calc(100vh - 100px);display:flex;align-items:flex-start;padding-top:36px}
+body:not(.admin-section-open) .wrap{min-height:calc(100vh - 76px);display:block;width:100%;padding:0;margin:0}
 body:not(.admin-section-open) .footer{display:none!important}
-body:not(.admin-section-open) .wrap:before{content:"APSAN · WEBSITE MANAGEMENT";display:block;width:100%;padding:26px 22px;border-radius:18px;background:linear-gradient(120deg,#071d3b,#0878c9);color:#fff;font-size:20px;font-weight:900;letter-spacing:.5px;box-shadow:0 12px 30px #092d5520}
+body:not(.admin-section-open) .wrap:before{content:none!important;display:none!important}
 body.admin-section-open .wrap>.intro,
 body.admin-section-open .wrap>.stats,
 body.admin-section-open .footer{display:none!important}
@@ -204,6 +204,15 @@ body{margin:0;background:#f1f6ff;color:#102b55}
 .side#adminSideMenu{left:auto!important;right:0!important;transform:translateX(105%)!important;border-radius:22px 0 0 22px!important;box-shadow:-15px 0 45px #001b3b40!important}
 .side#adminSideMenu.open{transform:translateX(0)!important}
 .home-open-menu{display:none!important}
+
+/* Fix: home must occupy the full viewport, without legacy generated banner */
+body:not(.admin-section-open) main.wrap.apsan-app{display:block!important;width:100%!important;max-width:none!important;margin:0!important;padding:0!important}
+body:not(.admin-section-open) .home-screen{display:flex!important;position:relative;width:100%!important;min-height:calc(100dvh - 76px)!important;box-sizing:border-box;flex-direction:column;align-items:center;justify-content:center;text-align:center;margin:0!important}
+body:not(.admin-section-open) .home-symbol{top:28px}
+@media(max-width:600px){
+ body:not(.admin-section-open) .home-screen{min-height:calc(100dvh - 68px)!important;padding:32px 22px}
+ body:not(.admin-section-open) .home-symbol{top:25px}
+}
 </style>
 </head>
 <body>
