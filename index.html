@@ -141,34 +141,97 @@ body.admin-section-open #notice,
 body.admin-section-open #publishSettings{display:none!important}
 body.admin-section-open #view{display:block!important;width:100%;margin:0!important}
 body.admin-section-open .side{display:block}
+
+/* Final mobile-first APSAN Management UI — one screen at a time */
+body{margin:0;background:#f1f6ff;color:#102b55}
+.top{background:#082b5b!important;color:#fff!important;min-height:76px;padding:12px 20px!important;box-shadow:0 5px 18px #06224a20}
+.brand h1{color:#fff!important;font-size:19px}.brand p{color:#d5e6fb!important;font-size:11px}
+.top-actions .status,#refreshBtn{display:none!important}
+.top-icon{width:43px;height:43px;background:#ffffff16;color:#fff;border:1px solid #ffffff30}
+.top-icon.menu-trigger{background:#fff;color:#082b5b;border:0;width:46px;height:46px}
+.top-actions{gap:9px}
+.profile-popover{color:#15365f}
+#adminNotifications .top-dot{display:block}
+.wrap.apsan-app{max-width:none;width:100%;min-height:calc(100vh - 76px);margin:0;padding:0}
+.home-screen{min-height:calc(100vh - 76px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 22px;text-align:center;background:linear-gradient(160deg,#fff 0%,#f2f7ff 70%,#e6f0ff 100%)}
+.home-symbol{position:absolute;top:96px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:900;letter-spacing:2px;color:#7b91ad}
+.home-icon{width:78px;height:78px;border-radius:23px;background:#e6f1ff;color:#0b4b91;display:grid;place-items:center;font-size:39px;margin-bottom:20px}
+.home-screen h2{margin:0;color:#092d60;font-size:27px;font-weight:900}
+.home-screen p{max-width:290px;margin:12px auto 26px;color:#61758f;font-size:15px;line-height:1.5}
+.home-open-menu{border:0;border-radius:14px;padding:16px 27px;background:linear-gradient(120deg,#082b5b,#0876d1);color:#fff;font-size:16px;font-weight:850;box-shadow:0 9px 22px #064b982e}
+.menu-backdrop{position:fixed;inset:0;background:#061a34b8;z-index:110;opacity:0;visibility:hidden;transition:.2s}
+.menu-backdrop.open{opacity:1;visibility:visible}
+.side#adminSideMenu{position:fixed!important;z-index:120;top:0;left:0;right:auto;bottom:0;width:min(355px,88vw);height:100dvh;overflow-y:auto;padding:18px 15px!important;border:0;border-radius:0 22px 22px 0!important;background:linear-gradient(180deg,#061d42,#0b3974);box-shadow:15px 0 45px #001b3b40!important;transform:translateX(-105%);transition:transform .25s ease;display:block!important}
+.side#adminSideMenu.open{transform:translateX(0)}
+.drawer-brand{display:flex;align-items:center;gap:11px;padding:4px 3px 20px;border-bottom:1px solid #ffffff25;margin-bottom:18px;color:#fff}
+.drawer-brand .logo{width:45px;height:45px;flex:0 0 45px}
+.drawer-brand div:nth-child(2){display:grid;gap:4px;flex:1}.drawer-brand strong{font-size:16px}.drawer-brand small{font-size:11px;color:#c5d8f1}
+.drawer-brand>button{width:37px;height:37px;border:0;border-radius:50%;background:#ffffff18;color:#fff;font-size:25px}
+.drawer-caption{font-size:10px;letter-spacing:1.6px;font-weight:900;color:#8fb9e8;padding:0 11px 8px}
+.side#adminSideMenu .navbtn{width:100%;display:flex;align-items:center;gap:12px;padding:14px 12px;margin:4px 0;border:0;border-radius:12px;background:transparent;color:#e5f1ff;text-align:left;font-size:14px;font-weight:750}
+.side#adminSideMenu .navbtn .ico{width:24px;font-size:18px}
+.side#adminSideMenu .navbtn.active,.side#adminSideMenu .navbtn:hover{background:linear-gradient(100deg,#0878f9,#075bc6);color:#fff}
+.drawer-divider{height:1px;background:#ffffff25;margin:17px 4px}
+.side#adminSideMenu .token-box{margin:0;background:#ffffff0d;border:1px solid #ffffff25;color:#fff}
+.side#adminSideMenu .token-box summary{color:#fff}
+.side#adminSideMenu .token-box .notice{background:#fff7e8;color:#815d20}
+.side#adminSideMenu .token-box input{min-width:0}
+.side#adminSideMenu .token-row{flex-wrap:wrap}
+.drawer-footer{padding:20px 10px;color:#a9c6e7;font-size:10px;letter-spacing:.5px}
+.workspace{width:100%;min-height:calc(100vh - 76px);padding:18px clamp(12px,3vw,28px) 35px;background:#f1f6ff}
+.workspace[hidden],.home-screen[hidden]{display:none!important}
+.workspace-top{display:flex;align-items:center;gap:12px;max-width:1100px;margin:0 auto 16px}
+.workspace-top #workspaceLabel{flex:1;font-size:18px;font-weight:900;color:#092d60}
+.workspace-menu{background:#082b5b;color:#fff}
+#view{max-width:1100px;margin:0 auto}
+#view>.panel-head{margin-bottom:18px}
+#notice{display:none;max-width:1100px;margin:0 auto 12px}
+#notice.notice-visible{display:block}
+#publishSettings{display:block}
+.sr-counters{display:none!important}
+#apsanLogout{display:none!important}
+.profile-popover #apsanLogout{display:inline-flex!important}
+@media(max-width:600px){
+ .top{padding:10px 12px!important;min-height:68px}.brand{gap:8px}.brand .logo{width:40px;height:40px}.brand h1{font-size:15px}.brand p{font-size:9px;max-width:145px;line-height:1.3}
+ .top-actions{gap:6px}.top-icon{width:36px;height:36px;font-size:17px}.top-icon.menu-trigger{width:40px;height:40px}
+ .wrap.apsan-app{min-height:calc(100vh - 68px)}.home-screen{min-height:calc(100vh - 68px)}
+ .home-symbol{top:88px}.home-screen h2{font-size:24px}
+ .workspace{min-height:calc(100vh - 68px);padding:13px 10px 25px}
+ .workspace-top{margin-bottom:12px}.workspace-top #workspaceLabel{font-size:16px}
+}
 </style>
 </head>
 <body>
 <div id="apsanLogin"><div class="login-card"><div class="login-logo">APSAN</div><h2>Área administrativa</h2><p>Entre com a sua conta autorizada APSAN.</p><form id="apsanLoginForm"><label for="apsanEmail">E-mail</label><input id="apsanEmail" type="email" autocomplete="username" required value="eduardo.gabriel@apsanlda.com"><label for="apsanPassword">Palavra-passe</label><input id="apsanPassword" type="password" autocomplete="current-password" required><button id="apsanLoginBtn" type="submit">Entrar no painel</button><div class="login-error" id="apsanLoginError"></div></form></div></div>
 <header class="top"><div class="brand"><div class="logo">APSAN</div><div><h1>APSAN, LDA</h1><p>WEBSITE MANAGEMENT · Gestão do Website Oficial</p></div></div><div class="top-actions"><button class="top-icon" id="adminNotifications" type="button" aria-label="Notificações" title="Notificações">♧<span class="top-dot"></span></button><button class="top-icon" id="adminProfile" type="button" aria-label="Perfil do administrador" title="Perfil">♙</button><button class="top-icon menu-trigger" id="adminMenuToggle" type="button" aria-label="Abrir menu" aria-expanded="false" title="Menu">☰</button><button class="btn soft" id="refreshBtn">↻ Actualizar</button><div class="profile-popover" id="adminProfilePopover" hidden><strong>Administrador APSAN</strong><small>eduardo.gabriel@apsanlda.com</small><button type="button" class="btn soft" id="profileLogout">Terminar sessão</button></div></div></header>
-<main class="wrap">
-<div class="intro"><div><h2>Painel de controlo</h2><p>Gere os conteúdos que serão apresentados em apsanlda.com.</p></div>
-<section class="hero-admin"><div class="hero-copy"><div class="eyebrow">APSAN · WEBSITE MANAGEMENT</div><h2>Bem-vindo ao seu <span>Painel de Gestão</span></h2><p>Gira produtos, serviços, publicações, vídeos e encomendas do website oficial com simplicidade e controlo.</p></div><div class="hero-mark">✦<small>APSAN · LDA</small></div></section>
-<section class="quick-actions"><a class="quick-action" href="#view" data-quick="services"><span class="qa-icon">＋</span><span>Novo serviço<small>Adicionar ao website</small></span></a><a class="quick-action" href="#view" data-quick="products"><span class="qa-icon">▣</span><span>Novo produto<small>Publicar na montra</small></span></a><a class="quick-action" href="#view" data-quick="posts"><span class="qa-icon">▤</span><span>Nova publicação<small>Partilhar novidades</small></span></a><a class="quick-action" href="#view" data-quick="videos"><span class="qa-icon">▶</span><span>Adicionar vídeo<small>YouTube no website</small></span></a></section>
-<span class="badge" id="connectionBadge">A carregar dados…</span></div>
-<section class="stats"><div class="stat"><span>Serviços</span><strong id="countServices">—</strong></div><div class="stat"><span>Publicações</span><strong id="countPosts">—</strong></div><div class="stat"><span>Vídeos YouTube</span><strong id="countVideos">—</strong></div></section>
-<div class="layout">
-<div class="menu-backdrop" id="adminMenuBackdrop"></div><aside class="side" id="adminSideMenu"><div class="drawer-title"><strong>Gestão da Plataforma</strong><button type="button" id="adminMenuClose" aria-label="Fechar menu">×</button></div>
-<button class="navbtn active" data-tab="services"><span class="ico">▦</span> Serviços</button>
-<button class="navbtn" data-tab="posts"><span class="ico">▤</span> Publicações</button>
-<button class="navbtn" data-tab="videos"><span class="ico">▶</span> Vídeos YouTube</button>
-<button class="navbtn" data-tab="products"><span class="ico">▣</span> Produtos e serviços</button>
-<button class="navbtn" data-tab="orders"><span class="ico">🛒</span> Encomendas</button>
-<button class="navbtn" data-tab="appointments"><span class="ico">🩺</span> Agendamentos de Consultas</button>
-<div class="side-note">APSAN, LDA<br>Gestão editorial própria</div>
-</aside>
-<section class="panel">
-<div id="notice" class="notice">O painel está aberto. Para gravar conteúdos no GitHub, configura a autorização de publicação nas definições abaixo.</div>
-<details class="token-box" id="publishSettings"><summary>⚙ Definições de publicação (não é login do painel)</summary><div class="notice warn" style="margin-top:12px">O painel é de acesso direto, sem autenticação. Para gravar no repositório é necessário um token GitHub com acesso de escrita ao repositório. O token fica apenas nesta sessão do navegador e não é enviado ao site público. Não partilhes este painel com pessoas não autorizadas enquanto o token estiver ativo.</div><div class="token-row"><input id="githubToken" type="password" autocomplete="off" placeholder="Token GitHub (fine-grained, Contents: Read and write)"><button class="btn soft" id="saveToken">Usar nesta sessão</button><button class="btn danger" id="clearToken">Limpar</button></div><div class="hint">Não coloques o token no código. Ao fechar a sessão do navegador, o token temporário será eliminado.</div></details>
-<div id="view"></div>
-</section>
-</div>
-<div class="footer">APSAN, LDA · Painel próprio de gestão de conteúdos</div>
+<main class="wrap apsan-app">
+ <section class="home-screen" id="homeScreen">
+  <div class="home-symbol">APSAN</div>
+  <div class="home-icon">▣</div>
+  <h2>Gestão do Website</h2>
+  <p>Seleccione uma opção no menu para começar.</p>
+  <button type="button" class="home-open-menu" id="homeOpenMenu">☰ Abrir Menu</button>
+ </section>
+ <div class="menu-backdrop" id="adminMenuBackdrop"></div>
+ <aside class="side" id="adminSideMenu" aria-label="Menu de gestão">
+  <div class="drawer-brand"><div class="logo">APSAN</div><div><strong>APSAN, LDA</strong><small>Website Management</small></div><button type="button" id="adminMenuClose" aria-label="Fechar menu">×</button></div>
+  <div class="drawer-caption">MENU PRINCIPAL</div>
+  <button class="navbtn" data-tab="appointments"><span class="ico">🩺</span> Agendamentos de Consultas</button>
+  <button class="navbtn" data-tab="services"><span class="ico">▦</span> Serviços</button>
+  <button class="navbtn" data-tab="products"><span class="ico">▣</span> Produtos e serviços</button>
+  <button class="navbtn" data-tab="posts"><span class="ico">▤</span> Publicações</button>
+  <button class="navbtn" data-tab="videos"><span class="ico">▶</span> Vídeos YouTube</button>
+  <button class="navbtn" data-tab="orders"><span class="ico">🛒</span> Encomendas / Pedidos</button>
+  <div class="drawer-divider"></div>
+  <details class="token-box" id="publishSettings"><summary>⚙ Definições de publicação</summary><div class="notice warn" style="margin-top:12px">Para publicar conteúdos no GitHub, configure um token com acesso de escrita. O token fica apenas nesta sessão do navegador. Não partilhe o painel com pessoas não autorizadas.</div><div class="token-row"><input id="githubToken" type="password" autocomplete="off" placeholder="Token GitHub"><button class="btn soft" id="saveToken">Guardar</button><button class="btn danger" id="clearToken">Limpar</button></div></details>
+  <div class="drawer-footer">APSAN, LDA · Gestão do Website Oficial</div>
+ </aside>
+ <section class="workspace" id="workspace" hidden>
+  <div class="workspace-top"><button type="button" class="btn soft" id="workspaceBack">← Início</button><span id="workspaceLabel">Área seleccionada</span><button type="button" class="top-icon workspace-menu" id="workspaceMenu">☰</button></div>
+  <div id="notice" class="notice" role="status"></div>
+  <div id="view"></div>
+ </section>
+ <div class="sr-counters" aria-hidden="true"><span id="countServices">0</span><span id="countPosts">0</span><span id="countVideos">0</span><span id="connectionBadge">Repositório</span></div>
 </main>
 <script>
 const OWNER="mateus-max",REPO="Website-Management",BRANCH="main";
@@ -179,10 +242,10 @@ const TYPES={
  posts:{label:"Publicações",folder:"content/posts",fields:["title","date","category","excerpt","coverImage","body","published"]},
  videos:{label:"Vídeos YouTube",folder:"content/videos",fields:["title","url","description","published"]}
 };
-let tab="services",items=[],editing=null,token=sessionStorage.getItem("apsan_gh_token")||"";
+let tab=null,items=[],editing=null,token=sessionStorage.getItem("apsan_gh_token")||"";
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-function notify(msg,type=""){const n=$("notice");n.textContent=msg;n.className="notice "+type;}
+function notify(msg,type=""){const n=$("notice");if(!n)return;n.textContent=msg;n.className="notice "+type;n.classList.add("notice-visible");clearTimeout(window.apsNoticeTimer);window.apsNoticeTimer=setTimeout(()=>n.classList.remove("notice-visible"),4500);}
 function headers(){const h={"Accept":"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28"};if(token)h.Authorization="Bearer "+token;return h;}
 function slug(s){return String(s||"conteudo").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,65)||"conteudo";}
 function yamlValue(v){return JSON.stringify(String(v??""));}
@@ -220,7 +283,9 @@ async function load(){
  }catch(e){$("connectionBadge").textContent="Falha de ligação";notify("Não foi possível carregar os conteúdos: "+e.message,"error");}
 }
 function render(){
+ if(!tab||!TYPES[tab])return;
  const cfg=TYPES[tab],arr=items[tab]||[];
+ $("homeScreen").hidden=true;$("workspace").hidden=false;$("workspaceLabel").textContent=cfg.label;
  $("view").innerHTML='<div class="panel-head"><div><h3>'+cfg.label+'</h3><p>Cria, edita e publica conteúdos no site oficial.</p></div><button class="btn primary" id="newBtn">＋ Novo conteúdo</button></div><div class="toolbar"><input class="search" id="filter" placeholder="Pesquisar '+cfg.label.toLowerCase()+'…"><button class="btn soft" id="reloadList">↻</button></div><div class="list" id="list"></div>';
  drawList(arr);
  $("newBtn").onclick=()=>form();$("reloadList").onclick=load;
@@ -330,10 +395,14 @@ async function removeItem(item){
  catch(e){notify("Não foi possível eliminar: "+e.message,"error");}
 }
 function youtubeId(url){try{const u=new URL(url);if(u.hostname.includes("youtu.be"))return u.pathname.slice(1);if(u.hostname.includes("youtube.com"))return u.searchParams.get("v")||(u.pathname.match(/\/(?:embed|shorts)\/([^/]+)/)||[])[1];}catch(e){}return null;}
-document.querySelectorAll(".navbtn").forEach(b=>b.onclick=()=>{tab=b.dataset.tab;document.body.classList.add("admin-section-open");document.querySelectorAll(".navbtn").forEach(x=>x.classList.toggle("active",x===b));closeAdminMenu();render();});
+document.querySelectorAll(".navbtn").forEach(b=>b.onclick=()=>{tab=b.dataset.tab;document.querySelectorAll(".navbtn").forEach(x=>x.classList.toggle("active",x===b));closeAdminMenu();if(tab==="appointments"||tab==="orders")return;render();});
+
 const adminMenu=$("adminSideMenu"),adminBackdrop=$("adminMenuBackdrop"),menuToggle=$("adminMenuToggle"),profilePopover=$("adminProfilePopover");
-function closeAdminMenu(){adminMenu.classList.remove("open");adminBackdrop.classList.remove("open");menuToggle.setAttribute("aria-expanded","false");}
-menuToggle.onclick=()=>{const opening=!adminMenu.classList.contains("open");adminMenu.classList.toggle("open",opening);adminBackdrop.classList.toggle("open",opening);menuToggle.setAttribute("aria-expanded",String(opening));};
+function openAdminMenu(){adminMenu.classList.add("open");adminBackdrop.classList.add("open");}
+function closeAdminMenu(){adminMenu.classList.remove("open");adminBackdrop.classList.remove("open");if(menuToggle)menuToggle.setAttribute("aria-expanded","false");}
+function toggleAdminMenu(){const opening=!adminMenu.classList.contains("open");if(opening)openAdminMenu();else closeAdminMenu();if(menuToggle)menuToggle.setAttribute("aria-expanded",String(opening));}
+menuToggle.onclick=toggleAdminMenu;$("homeOpenMenu").onclick=openAdminMenu;$("workspaceMenu").onclick=openAdminMenu;
+$("workspaceBack").onclick=()=>{tab=null;$("workspace").hidden=true;$("homeScreen").hidden=false;document.querySelectorAll(".navbtn").forEach(x=>x.classList.remove("active"));};
 $("adminMenuClose").onclick=closeAdminMenu;adminBackdrop.onclick=closeAdminMenu;
 document.querySelectorAll(".navbtn").forEach(b=>b.addEventListener("click",closeAdminMenu));
 $("adminProfile").onclick=()=>{profilePopover.hidden=!profilePopover.hidden;};
@@ -343,7 +412,7 @@ document.addEventListener("click",e=>{if(!e.target.closest("#adminProfile")&&!e.
 
 $("refreshBtn").onclick=load;$("saveToken").onclick=()=>{const v=$("githubToken").value.trim();if(!v){notify("Cola o token GitHub no campo antes de continuar.","warn");return;}token=v;sessionStorage.setItem("apsan_gh_token",v);$("githubToken").value="";notify("Autorização de publicação disponível apenas nesta sessão do navegador.","ok");};
 $("clearToken").onclick=()=>{token="";sessionStorage.removeItem("apsan_gh_token");$("githubToken").value="";notify("Token removido desta sessão.","ok");};
-if(token)notify("Token temporário carregado nesta sessão. O painel continua sem autenticação de acesso.","ok");
+if(token)notify("Token de publicação carregado nesta sessão.","ok");
 load();
 </script>
 
