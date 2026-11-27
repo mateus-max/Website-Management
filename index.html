@@ -239,6 +239,7 @@ body:not(.admin-section-open) .home-symbol{top:28px}
   <div class="drawer-caption">MENU PRINCIPAL</div>
   <button class="navbtn" data-tab="home"><span class="ico">⌂</span> Início</button>
   <button class="navbtn" data-tab="appointments"><span class="ico">🩺</span> Agendamentos de Consultas</button>
+  <button class="navbtn" data-tab="serviceRequests"><span class="ico">📋</span> Solicitações de Serviços</button>
   <button class="navbtn" data-tab="services"><span class="ico">▦</span> Serviços</button>
   <button class="navbtn" data-tab="products"><span class="ico">▣</span> Produtos e serviços</button>
   <button class="navbtn" data-tab="posts"><span class="ico">▤</span> Publicações</button>
@@ -417,7 +418,7 @@ async function removeItem(item){
  catch(e){notify("Não foi possível eliminar: "+e.message,"error");}
 }
 function youtubeId(url){try{const u=new URL(url);if(u.hostname.includes("youtu.be"))return u.pathname.slice(1);if(u.hostname.includes("youtube.com"))return u.searchParams.get("v")||(u.pathname.match(/\/(?:embed|shorts)\/([^/]+)/)||[])[1];}catch(e){}return null;}
-document.querySelectorAll(".navbtn").forEach(b=>b.onclick=async()=>{tab=b.dataset.tab;document.querySelectorAll(".navbtn").forEach(x=>x.classList.toggle("active",x===b));closeAdminMenu();if(tab==="home"){tab=null;document.body.classList.remove("admin-section-open");$("workspace").hidden=true;$("homeScreen").hidden=false;$("view").innerHTML="";return;}document.body.classList.add("admin-section-open");$("homeScreen").hidden=true;$("workspace").hidden=false;const labels={appointments:"Agendamentos de Consultas",products:"Produtos e serviços",videos:"Vídeos YouTube",orders:"Encomendas / Pedidos",services:"Serviços",posts:"Publicações"};$("workspaceLabel").textContent=labels[tab]||"Gestão";try{if(tab==="appointments"&&window.apsanOpenAppointments)return await window.apsanOpenAppointments();if(tab==="products"&&window.apsanOpenProducts)return await window.apsanOpenProducts();if(tab==="videos"&&window.apsanOpenVideos)return await window.apsanOpenVideos();if(tab==="orders"&&window.apsanOpenOrders)return await window.apsanOpenOrders();if(tab==="services"||tab==="posts"){await load();render();return;}notify("Esta secção ainda não está disponível. Atualize a página e tente novamente.","error");}catch(e){notify("Não foi possível abrir esta secção: "+e.message,"error");console.error("[APSAN navigation]",e);}});
+document.querySelectorAll(".navbtn").forEach(b=>b.onclick=async()=>{tab=b.dataset.tab;document.querySelectorAll(".navbtn").forEach(x=>x.classList.toggle("active",x===b));closeAdminMenu();if(tab==="home"){tab=null;document.body.classList.remove("admin-section-open");$("workspace").hidden=true;$("homeScreen").hidden=false;$("view").innerHTML="";return;}document.body.classList.add("admin-section-open");$("homeScreen").hidden=true;$("workspace").hidden=false;const labels={appointments:"Agendamentos de Consultas",serviceRequests:"Solicitações de Serviços",products:"Produtos e serviços",videos:"Vídeos YouTube",orders:"Encomendas / Pedidos",services:"Serviços",posts:"Publicações"};$("workspaceLabel").textContent=labels[tab]||"Gestão";try{if(tab==="appointments"&&window.apsanOpenAppointments)return await window.apsanOpenAppointments();if(tab==="serviceRequests"&&window.apsanOpenServiceRequests)return await window.apsanOpenServiceRequests();if(tab==="products"&&window.apsanOpenProducts)return await window.apsanOpenProducts();if(tab==="videos"&&window.apsanOpenVideos)return await window.apsanOpenVideos();if(tab==="orders"&&window.apsanOpenOrders)return await window.apsanOpenOrders();if(tab==="services"||tab==="posts"){await load();render();return;}notify("Esta secção ainda não está disponível. Atualize a página e tente novamente.","error");}catch(e){notify("Não foi possível abrir esta secção: "+e.message,"error");console.error("[APSAN navigation]",e);}});
 
 const adminMenu=$("adminSideMenu"),adminBackdrop=$("adminMenuBackdrop"),menuToggle=$("adminMenuToggle"),profilePopover=$("adminProfilePopover");
 function openAdminMenu(){adminMenu.classList.add("open");adminBackdrop.classList.add("open");}
@@ -453,6 +454,7 @@ window.apsanFirebase={auth,db,ref,get,set,push,update,remove,onValue};
 </script>
 <script type="module" src="products-admin.js?v=4"></script>
 <script src="appointments-admin.js?v=5"></script>
+<script src="service-requests-admin.js?v=1"></script>
 <script src="videos-admin.js?v=4"></script>
 <script type="module" src="orders-admin.js?v=5"></script>
 
