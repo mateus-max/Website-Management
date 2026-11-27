@@ -199,6 +199,11 @@ body{margin:0;background:#f1f6ff;color:#102b55}
  .workspace{min-height:calc(100vh - 68px);padding:13px 10px 25px}
  .workspace-top{margin-bottom:12px}.workspace-top #workspaceLabel{font-size:16px}
 }
+
+/* Drawer right-side matching approved APSAN visual */
+.side#adminSideMenu{left:auto!important;right:0!important;transform:translateX(105%)!important;border-radius:22px 0 0 22px!important;box-shadow:-15px 0 45px #001b3b40!important}
+.side#adminSideMenu.open{transform:translateX(0)!important}
+.home-open-menu{display:none!important}
 </style>
 </head>
 <body>
@@ -210,12 +215,12 @@ body{margin:0;background:#f1f6ff;color:#102b55}
   <div class="home-icon">▣</div>
   <h2>Gestão do Website</h2>
   <p>Seleccione uma opção no menu para começar.</p>
-  <button type="button" class="home-open-menu" id="homeOpenMenu">☰ Abrir Menu</button>
  </section>
  <div class="menu-backdrop" id="adminMenuBackdrop"></div>
  <aside class="side" id="adminSideMenu" aria-label="Menu de gestão">
   <div class="drawer-brand"><div class="logo">APSAN</div><div><strong>APSAN, LDA</strong><small>Website Management</small></div><button type="button" id="adminMenuClose" aria-label="Fechar menu">×</button></div>
   <div class="drawer-caption">MENU PRINCIPAL</div>
+  <button class="navbtn" data-tab="home"><span class="ico">⌂</span> Início</button>
   <button class="navbtn" data-tab="appointments"><span class="ico">🩺</span> Agendamentos de Consultas</button>
   <button class="navbtn" data-tab="services"><span class="ico">▦</span> Serviços</button>
   <button class="navbtn" data-tab="products"><span class="ico">▣</span> Produtos e serviços</button>
@@ -395,13 +400,13 @@ async function removeItem(item){
  catch(e){notify("Não foi possível eliminar: "+e.message,"error");}
 }
 function youtubeId(url){try{const u=new URL(url);if(u.hostname.includes("youtu.be"))return u.pathname.slice(1);if(u.hostname.includes("youtube.com"))return u.searchParams.get("v")||(u.pathname.match(/\/(?:embed|shorts)\/([^/]+)/)||[])[1];}catch(e){}return null;}
-document.querySelectorAll(".navbtn").forEach(b=>b.onclick=()=>{tab=b.dataset.tab;document.querySelectorAll(".navbtn").forEach(x=>x.classList.toggle("active",x===b));closeAdminMenu();if(tab==="appointments"||tab==="orders")return;render();});
+document.querySelectorAll(".navbtn").forEach(b=>b.onclick=()=>{tab=b.dataset.tab;document.querySelectorAll(".navbtn").forEach(x=>x.classList.toggle("active",x===b));closeAdminMenu();if(tab==="home"){tab=null;$("workspace").hidden=true;$("homeScreen").hidden=false;return;}if(tab==="appointments"||tab==="orders")return;render();});
 
 const adminMenu=$("adminSideMenu"),adminBackdrop=$("adminMenuBackdrop"),menuToggle=$("adminMenuToggle"),profilePopover=$("adminProfilePopover");
 function openAdminMenu(){adminMenu.classList.add("open");adminBackdrop.classList.add("open");}
 function closeAdminMenu(){adminMenu.classList.remove("open");adminBackdrop.classList.remove("open");if(menuToggle)menuToggle.setAttribute("aria-expanded","false");}
 function toggleAdminMenu(){const opening=!adminMenu.classList.contains("open");if(opening)openAdminMenu();else closeAdminMenu();if(menuToggle)menuToggle.setAttribute("aria-expanded",String(opening));}
-menuToggle.onclick=toggleAdminMenu;$("homeOpenMenu").onclick=openAdminMenu;$("workspaceMenu").onclick=openAdminMenu;
+menuToggle.onclick=toggleAdminMenu;$("workspaceMenu").onclick=openAdminMenu;
 $("workspaceBack").onclick=()=>{tab=null;$("workspace").hidden=true;$("homeScreen").hidden=false;document.querySelectorAll(".navbtn").forEach(x=>x.classList.remove("active"));};
 $("adminMenuClose").onclick=closeAdminMenu;adminBackdrop.onclick=closeAdminMenu;
 document.querySelectorAll(".navbtn").forEach(b=>b.addEventListener("click",closeAdminMenu));
