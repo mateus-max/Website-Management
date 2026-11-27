@@ -14,7 +14,7 @@
  function statusLabel(p){return p.status==="approved"?"Aprovado":p.status==="review"?"Em análise":p.status==="rejected"?"Rejeitado":"Novo pedido"}
  function open(){
   var v=document.getElementById("view");
-  v.innerHTML='<div class="aps-appointments"><div class="aps-appointments-head"><button type="button" class="btn soft aps-appointments-home" id="apsAppointmentsHome">← Início</button><div class="aps-appointments-title"><span class="aps-title-icon">▣</span><h2>Consultas</h2></div><button class="btn soft aps-refresh" id="apsAppointmentsRefresh" aria-label="Actualizar" title="Actualizar">↻</button></div><div id="apsAppointmentsList" class="aps-appointments-list">A carregar solicitações…</div><div id="apsAppointmentDetail"></div></div>';
+  v.innerHTML='<div class="aps-appointments"><div class="aps-appointments-head"><div class="aps-appointments-title"><span class="aps-title-icon">▣</span><h2>Consultas</h2></div><button class="btn soft aps-refresh" id="apsAppointmentsRefresh" aria-label="Actualizar" title="Actualizar">↻</button></div><div id="apsAppointmentsList" class="aps-appointments-list">A carregar solicitações…</div><div id="apsAppointmentDetail"></div></div>';
   document.getElementById("apsAppointmentsRefresh").onclick=load;
   document.getElementById("apsAppointmentsHome").onclick=function(){var b=document.querySelector('.navbtn[data-tab="home"]');if(b)b.click();else{var back=document.getElementById("workspaceBack");if(back)back.click()}};
   load();
