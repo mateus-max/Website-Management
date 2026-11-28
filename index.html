@@ -423,7 +423,7 @@ async function uploadSelectedImage(){
  return "uploads/"+filename;
 }
 async function save(){
- if(!token){notify("Não foi possível publicar: a autorização do GitHub ainda não está configurada nesta sessão. Abra as Definições de publicação manualmente no menu e configure o token. Nenhum conteúdo foi enviado.", "error");return;}
+ if(!token){const supplied=window.prompt("Para publicar no site oficial, cole o Token GitHub com permissão de escrita no repositório mateus-max/Website-Management. O token será guardado apenas nesta sessão do navegador.");if(!supplied||!supplied.trim()){notify("Publicação cancelada: falta o Token GitHub. O conteúdo continua no formulário e não foi perdido.","error");return;}token=supplied.trim();sessionStorage.setItem("apsan_gh_token",token);}
  const data={};TYPES[tab].fields.forEach(k=>{const el=$("f_"+k);if(k==="published")data[k]=el.checked;else if(el)data[k]=el.value.trim();});
  if(!data.title){notify("Indica um título antes de guardar.","error");return;}
  if(tab==="videos"&&!youtubeId(data.url)){notify("Insere um link válido de um vídeo público do YouTube.","error");return;}
