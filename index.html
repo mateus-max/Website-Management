@@ -423,7 +423,7 @@ async function uploadSelectedImage(){
  return "uploads/"+filename;
 }
 async function save(){
- if(!token){notify("PUBLICAÇÃO BLOQUEADA: falta configurar o Token GitHub. Abra as definições que acabaram de aparecer no menu e guarde o token com permissão de escrita no repositório.", "warn");const settings=$("publishSettings");if(settings)settings.open=true;if(typeof openAdminMenu==="function")openAdminMenu();setTimeout(()=>{if(settings)settings.scrollIntoView({behavior:"smooth",block:"center"});const input=$("githubToken");if(input)input.focus();},180);return;}
+ if(!token){notify("Não foi possível publicar: a autorização do GitHub ainda não está configurada nesta sessão. Abra as Definições de publicação manualmente no menu e configure o token. Nenhum conteúdo foi enviado.", "error");return;}
  const data={};TYPES[tab].fields.forEach(k=>{const el=$("f_"+k);if(k==="published")data[k]=el.checked;else if(el)data[k]=el.value.trim();});
  if(!data.title){notify("Indica um título antes de guardar.","error");return;}
  if(tab==="videos"&&!youtubeId(data.url)){notify("Insere um link válido de um vídeo público do YouTube.","error");return;}
@@ -437,7 +437,7 @@ async function save(){
   await api(path,{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});
   notify(data.published?"Publicação enviada para o site oficial com sucesso. Actualize a página publicacoes.html para confirmar.":"Rascunho guardado no repositório. Ainda não aparece no site porque a publicação está desactivada.","ok");
   await load();
- }catch(e){const msg=String(e.message||e);notify("FALHA AO PUBLICAR: "+msg+(msg.includes("401")||msg.includes("Bad credentials")?" — o Token GitHub é inválido ou expirou. Actualize-o nas Definições de publicação.":msg.includes("403")?" — o Token não tem permissão para escrever neste repositório.":" — verifique a ligação e tente novamente."),"error");btn.disabled=false;btn.textContent="Tentar publicar novamente";if(msg.includes("401")||msg.includes("Bad credentials")||msg.includes("403")){const settings=$("publishSettings");if(settings)settings.open=true;if(typeof openAdminMenu==="function")openAdminMenu();setTimeout(()=>{if(settings)settings.scrollIntoView({behavior:"smooth",block:"center"});},180);}}
+ }catch(e){const msg=String(e.message||e);notify("FALHA AO PUBLICAR: "+msg+(msg.includes("401")||msg.includes("Bad credentials")?" — o Token GitHub é inválido ou expirou. Actualize-o nas Definições de publicação.":msg.includes("403")?" — o Token não tem permissão para escrever neste repositório.":" — verifique a ligação e tente novamente."),"error");btn.disabled=false;btn.textContent="Tentar publicar novamente";if(msg.includes("401")||msg.includes("Bad credentials")||msg.includes("403")){notify("Actualize o token nas Definições de publicação. O formulário continua aberto e os dados não foram apagados.","warn");}}
 }
 async function removeItem(item){
  if(!confirm('Eliminar "'+(item.title||"este conteúdo")+'"? Esta ação não pode ser desfeita.'))return;
