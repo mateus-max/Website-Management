@@ -222,7 +222,35 @@ body:not(.admin-section-open) .home-symbol{top:28px}
 #view{width:100%;max-width:1100px;margin:0 auto}
 #view .aps-appointments-head{margin-top:0}
 </style>
-</head>
+
+<style id="apsan-editorial-form-refresh">
+#view .form-wrap{width:100%;max-width:900px;margin:18px auto 40px;padding:clamp(16px,3vw,30px);background:#fff;border:1px solid #dce7f4;border-radius:20px;box-shadow:0 12px 35px rgba(8,39,79,.08)}
+#view .panel-head{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid #e5edf6}
+#view .panel-head h3{font-size:clamp(20px,3vw,27px);color:#082e60;margin:0 0 6px}
+#view .panel-head p{font-size:13px;color:#687d96;margin:0;line-height:1.5}
+#view .form-wrap>.field{margin:0 0 17px}
+#view .form-wrap .field>label{display:block;font-size:13px;font-weight:800;color:#173b68;margin-bottom:7px}
+#view .form-wrap input:not([type=checkbox]):not([type=file]),#view .form-wrap textarea,#view .form-wrap select{width:100%;min-height:46px;padding:12px 14px;border:1px solid #cfdae8;border-radius:11px;background:#fbfdff;color:#17324f;font:inherit;font-size:14px;box-sizing:border-box}
+#view .form-wrap textarea{min-height:110px;line-height:1.6;resize:vertical}
+#view .form-wrap textarea.editor{min-height:230px}
+#view .form-wrap input:focus,#view .form-wrap textarea:focus{outline:3px solid #0b73cf20;border-color:#0873ce;background:#fff}
+#view .form-wrap .grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+#view .uploadbox{padding:17px;border:1px dashed #91b5d8;border-radius:15px;background:#f4f9ff;margin:18px 0}
+#view .uploadbox>label{margin:0!important}
+#view #uploadPreview img{display:block;width:min(100%,520px);max-height:320px;object-fit:contain;margin:14px auto 0;border-radius:13px;background:#eaf1f9}
+#view .publish-guidance{display:flex;flex-direction:column;gap:5px;padding:14px 16px;border:1px solid #b9dfca;border-radius:13px;background:#effaf4;color:#176342;margin-top:18px}
+#view .publish-guidance strong{font-size:14px}
+#view .publish-guidance span{font-size:12px;line-height:1.5}
+#view .form-wrap .check{display:flex!important;align-items:center;gap:10px;padding:13px 15px;border:1px solid #c9e4d4;border-radius:12px;background:#f5fcf7;font-weight:750}
+#view .form-wrap .check input{width:19px;height:19px;accent-color:#0c9a60}
+#view .form-wrap .form-actions{display:flex;gap:10px;flex-wrap:wrap;padding-top:18px;margin-top:18px;border-top:1px solid #e5edf6}
+#view .form-wrap .form-actions .btn{min-height:46px;padding:0 22px;border-radius:11px;font-size:14px;font-weight:850}
+#view #saveBtn{background:linear-gradient(135deg,#0878d6,#0753ad);box-shadow:0 7px 18px #0878d633}
+#view #saveBtn:disabled{opacity:.65;cursor:wait}
+#view .editor-tools button{padding:9px 12px;border-radius:9px;background:#eef5fc;color:#174b7c;font-weight:700}
+#view .previewbox{margin-top:20px;border-radius:16px;padding:18px}
+@media(max-width:760px){#view .panel-head{align-items:flex-start}#view .form-wrap{padding:16px 13px;margin:12px 0 25px;border-radius:15px}#view .form-wrap .grid2{grid-template-columns:1fr;gap:0}#view .form-wrap .form-actions{display:grid;grid-template-columns:1fr}#view .form-wrap .form-actions .btn{width:100%}#view .form-wrap textarea.editor{min-height:210px}}
+</style></head>
 <body>
 <div id="apsanLogin"><div class="login-card"><div class="login-logo">APSAN</div><h2>Área administrativa</h2><p>Entre com a sua conta autorizada APSAN.</p><form id="apsanLoginForm"><label for="apsanEmail">E-mail</label><input id="apsanEmail" type="email" autocomplete="username" required value="eduardo.gabriel@apsanlda.com"><label for="apsanPassword">Palavra-passe</label><input id="apsanPassword" type="password" autocomplete="current-password" required><button id="apsanLoginBtn" type="submit">Entrar no painel</button><div class="login-error" id="apsanLoginError"></div></form></div></div>
 <header class="top"><div class="brand"><div class="logo">APSAN</div><div><h1>APSAN, LDA</h1><p>WEBSITE MANAGEMENT · Gestão do Website Oficial</p></div></div><div class="top-actions"><button class="top-icon" id="adminNotifications" type="button" aria-label="Notificações" title="Notificações">♧<span class="top-dot"></span></button><button class="top-icon" id="adminProfile" type="button" aria-label="Perfil do administrador" title="Perfil">♙</button><button class="top-icon menu-trigger" id="adminMenuToggle" type="button" aria-label="Abrir menu" aria-expanded="false" title="Menu">☰</button><button class="btn soft" id="refreshBtn">↻ Actualizar</button><div class="profile-popover" id="adminProfilePopover" hidden><strong>Administrador APSAN</strong><small>eduardo.gabriel@apsanlda.com</small><button type="button" class="btn soft" id="profileLogout">Terminar sessão</button></div></div></header>
@@ -332,8 +360,8 @@ function form(item=null){
  if(tab==="services")fields=f("title","Nome do serviço")+f("category","Categoria")+ta("summary","Descrição curta")+ta("details","Detalhes do serviço")+f("icon","Ícone Font Awesome","text","fas fa-briefcase")+'<div class="grid2">'+f("price","Preço (opcional)")+f("image","Imagem (URL directa da fotografia)")+'</div>';
  if(tab==="posts")fields=f("title","Título")+ '<div class="grid2">'+f("date","Data","date")+f("category","Categoria")+'</div>'+ta("excerpt","Resumo")+f("coverImage","Imagem de capa (URL ou caminho)")+ta("body","Conteúdo completo");
  if(tab==="videos")fields=f("title","Título do vídeo")+f("url","Link público do YouTube","url","https://www.youtube.com/watch?v=...")+ta("description","Descrição");
- $("view").innerHTML='<div class="panel-head"><div><h3>'+(item?"Editar":"Novo")+ " · "+TYPES[tab].label+'</h3><p>Os campos assinalados devem ser preenchidos antes de guardar.</p></div><button class="btn soft" id="backBtn">← Voltar</button></div><div class="form-wrap">'+fields+'<div id="uploadArea"></div><div class="field"><label class="check"><input id="f_published" type="checkbox" '+(String(d.published)==="true"||(!item&&d.published!==false)?"checked":"")+'> Publicar no site oficial</label></div><div class="form-actions"><button class="btn primary" id="saveBtn">Guardar conteúdo</button><button class="btn soft" id="cancelBtn">Cancelar</button></div></div>';
- $("backBtn").onclick=render;$("cancelBtn").onclick=render;$("saveBtn").onclick=save;setupEditorExtras();
+ $("view").innerHTML='<div class="panel-head"><div><h3>'+(item?"Editar":"Novo")+ " · "+TYPES[tab].label+'</h3><p>Os campos assinalados devem ser preenchidos antes de guardar.</p></div><button class="btn soft" id="backBtn">← Voltar</button></div><div class="form-wrap">'+fields+'<div id="uploadArea"></div><div class="field"><label class="check"><input id="f_published" type="checkbox" '+(String(d.published)==="true"||(!item&&d.published!==false)?"checked":"")+'> Publicar no site oficial</label></div><div class="publish-guidance"><strong>Publicação no site oficial</strong><span>Com esta opção activa, o conteúdo será publicado no site assim que guardar.</span></div><div class="form-actions"><button class="btn primary" id="saveBtn">Publicar agora</button><button class="btn soft" id="cancelBtn">Cancelar</button></div></div>';
+ $("backBtn").onclick=render;$("cancelBtn").onclick=render;$("saveBtn").onclick=save;const pub=$("f_published"),saveBtn=$("saveBtn");if(pub&&tab==="posts")pub.addEventListener("change",()=>saveBtn.textContent=pub.checked?"Publicar agora":"Guardar como rascunho");setupEditorExtras();
 }
 function setupEditorExtras(){
  const area=$("uploadArea");if(!area)return;
@@ -407,7 +435,7 @@ async function save(){
   const payload={message:(editing?"Atualizar":"Publicar")+" "+TYPES[tab].label+": "+data.title,content:btoa(unescape(encodeURIComponent(makeMarkdown(data,tab))))};
   if(editing)payload.sha=editing._sha;
   await api(path,{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});
-  notify("Conteúdo guardado no repositório. O site oficial irá apresentar a atualização após a atualização da cache.","ok");
+  notify(data.published?"Publicação enviada para o site oficial com sucesso. Actualize a página publicacoes.html para confirmar.":"Rascunho guardado no repositório. Ainda não aparece no site porque a publicação está desactivada.","ok");
   await load();
  }catch(e){notify("Não foi possível guardar: "+e.message,"error");btn.disabled=false;btn.textContent="Guardar conteúdo";}
 }
